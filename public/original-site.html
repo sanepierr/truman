@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truman Bed & Mattress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Urbanist:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<style>
+  :root {
+    --linen: oklch(96.5% 0.012 82);
+    --cream: oklch(93% 0.016 80);
+    --charcoal: oklch(14% 0.01 72);
+    --charcoal-soft: oklch(28% 0.012 72);
+    --sage: oklch(52% 0.09 148);
+    --sage-light: oklch(88% 0.05 148);
+    --gold: oklch(72% 0.1 78);
+    --gold-dark: oklch(55% 0.1 78);
+    --white: oklch(98.5% 0.005 80);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Urbanist', sans-serif;
+    background: var(--linen);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 60px;
+    transition: background 0.4s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(251,247,242,0.95);
+    backdrop-filter: blur(12px);
+    padding: 18px 60px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 36px; height: 36px;
+  }
+  .nav-logo-text {
+    font-family: 'Gloock', serif;
+    font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--charcoal); font-weight: 500;
+    line-height: 1.2;
+  }
+  .nav-logo-text span { display: block; font-size: 9px; letter-spacing: 0.3em; color: var(--gold-dark); }
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--charcoal); text-decoration: none; font-weight: 400;
+    opacity: 0.75; transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    border: 1px solid var(--charcoal); padding: 10px 22px;
+    text-decoration: none; color: var(--charcoal);
+    transition: background 0.25s, color 0.25s;
+  }
+  .nav-cta:hover { background: var(--charcoal); color: var(--white); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 100px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 60px;
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold-dark); margin-bottom: 32px; font-weight: 400;
+  }
+  .hero-title {
+    font-family: 'Gloock', serif;
+    font-size: clamp(52px, 5.5vw, 84px);
+    font-weight: 300; line-height: 1.08;
+    color: var(--charcoal); margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em { font-style: italic; color: var(--sage); }
+  .hero-body {
+    font-size: 16px; line-height: 1.75; color: var(--charcoal-soft);
+    max-width: 440px; margin-bottom: 48px; font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 20px; align-items: center; }
+  .btn-primary {
+    background: var(--charcoal); color: var(--white);
+    padding: 16px 40px; font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase; text-decoration: none; font-weight: 400;
+    transition: background 0.25s;
+  }
+  .btn-primary:hover { background: var(--charcoal-soft); }
+  .btn-ghost {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--charcoal); text-decoration: none; font-weight: 400;
+    border-bottom: 1px solid var(--sage); padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--sage); }
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 64px;
+    padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .hero-stat-num {
+    font-family: 'Gloock', serif;
+    font-size: 36px; font-weight: 400; color: var(--charcoal);
+    display: block;
+  }
+  .hero-stat-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--charcoal-soft); opacity: 0.7;
+  }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--cream);
+  }
+  .hero-img-placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+  }
+  .media-fill {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-img-placeholder svg { width: 100%; height: 100%; position: absolute; opacity: 0.4; }
+  .hero-img-label {
+    position: relative; font-family: monospace; font-size: 11px;
+    letter-spacing: 0.08em; color: var(--charcoal-soft); opacity: 0.5;
+    text-align: center;
+  }
+  .hero-tag {
+    position: absolute; bottom: 40px; left: 40px;
+    background: var(--white); padding: 16px 24px;
+    border-left: 3px solid var(--sage);
+    font-size: 12px; color: var(--charcoal-soft);
+    font-weight: 300;
+  }
+  .hero-tag strong { display: block; font-family: 'Gloock', serif; font-size: 22px; font-weight: 400; color: var(--charcoal); }
+
+  /* ── MARQUEE ── */
+  .marquee-bar {
+    background: var(--charcoal); color: var(--gold);
+    padding: 14px 0; overflow: hidden;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track span { padding: 0 40px; }
+  .marquee-track .dot { color: var(--sage); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 120px 60px; }
+  .section-label {
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-dark); margin-bottom: 20px; display: block;
+  }
+  .section-title {
+    font-family: 'Gloock', serif;
+    font-size: clamp(36px, 3.5vw, 56px);
+    font-weight: 300; line-height: 1.1; color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+  .section-title em { font-style: italic; }
+  .section-body {
+    font-size: 16px; line-height: 1.78; color: var(--charcoal-soft);
+    font-weight: 300; max-width: 520px;
+  }
+
+  /* ── PILLARS ── */
+  #pillars {
+    background: var(--charcoal); color: var(--white);
+    padding: 100px 60px;
+  }
+  .pillars-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px; background: rgba(255,255,255,0.08);
+    margin-top: 64px;
+  }
+  .pillar {
+    background: var(--charcoal); padding: 52px 48px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .pillar:hover { border-color: rgba(255,255,255,0.1); }
+  .pillar-num {
+    font-family: 'Gloock', serif;
+    font-size: 48px; color: var(--gold); font-weight: 300;
+    line-height: 1; margin-bottom: 28px; display: block;
+    opacity: 0.6;
+  }
+  .pillar-title {
+    font-family: 'Gloock', serif;
+    font-size: 28px; font-weight: 400; color: var(--white);
+    margin-bottom: 16px; letter-spacing: 0.01em;
+  }
+  .pillar-body {
+    font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.55);
+    font-weight: 300;
+  }
+
+  /* ── LAYER REVEAL ── */
+  #layer-reveal {
+    height: 280vh;
+    background: linear-gradient(180deg, var(--linen) 0%, var(--cream) 100%);
+    position: relative;
+    padding: 0;
+  }
+  .layer-stage {
+    position: sticky; top: 0;
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .layer-stage-inner {
+    position: relative;
+    width: min(1460px, 98vw);
+    height: 100%;
+    display: flex; align-items: center;
+  }
+  .layer-header {
+    position: absolute; top: 60px; left: 0;
+    z-index: 5;
+  }
+  .layer-mattress {
+    position: relative;
+    width: 860px; height: 520px;
+    margin-left: auto; margin-right: 0;
+    margin-top: 46px;
+    perspective: 1400px;
+  }
+  .layer-piece {
+    position: absolute; left: 0; right: 0;
+    height: 38px; border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.4) inset;
+    transform: translateY(var(--ty, 0px)) rotateX(8deg);
+    transform-origin: center;
+    will-change: transform;
+    overflow: hidden;
+  }
+  .layer-piece::after {
+    content: ''; position: absolute; inset: 0;
+    background: var(--tex, transparent);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .lp-1 { top: 30px; height: 32px; background: linear-gradient(180deg, #d8c9a8 0%, #c9b78f 100%); --tex: radial-gradient(circle at 12px 12px, rgba(0,0,0,0.18) 1px, transparent 1.6px) 0 0/22px 22px; box-shadow: 0 2px 0 rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.35); }
+  .lp-2 { top: 64px; height: 26px; background: linear-gradient(180deg, #b8a47c 0%, #a18d68 100%); --tex: repeating-linear-gradient(45deg, rgba(0,0,0,0.08) 0 2px, transparent 2px 6px); box-shadow: 0 2px 0 rgba(0,0,0,0.06); }
+  .lp-3 { top: 92px; height: 36px; background: linear-gradient(180deg, #2a2a30 0%, #1a1a1f 100%); --tex: repeating-linear-gradient(90deg, transparent 0 8px, rgba(255,255,255,0.04) 8px 9px); }
+  .lp-4 { top: 130px; height: 30px; background: #d4d0c8; --tex: repeating-linear-gradient(90deg, rgba(0,0,0,0.06) 0 3px, transparent 3px 8px); }
+  .lp-5 { top: 162px; height: 96px; background: linear-gradient(180deg, var(--sage) 0%, oklch(45% 0.09 148) 100%); --tex: repeating-linear-gradient(90deg, rgba(255,255,255,0.18) 0 6px, transparent 6px 14px, rgba(0,0,0,0.18) 14px 16px, transparent 16px 22px); }
+  .lp-6 { top: 260px; height: 24px; background: linear-gradient(180deg, #2a261f 0%, #1a1612 100%); }
+
+  .layer-callout {
+    position: absolute;
+    display: flex; align-items: flex-start; gap: 10px;
+    opacity: 0; transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .layer-callout.visible { opacity: 1; }
+  .layer-callout-line {
+    width: 56px; height: 1px; flex-shrink: 0;
+    background: var(--charcoal);
+    margin-top: 12px;
+    position: relative;
+  }
+  .layer-callout-line::after {
+    content: ''; position: absolute;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+    right: -3px; top: -3px;
+  }
+  .layer-callout-num {
+    font-family: 'Gloock', serif; font-size: 20px; line-height: 1;
+    color: var(--gold-dark); font-weight: 400;
+    width: 28px; flex-shrink: 0;
+  }
+  .layer-callout-text {
+    width: 180px;
+    background: rgba(252, 248, 240, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 8px 12px;
+    border-left: 1px solid var(--gold);
+  }
+  .layer-callout-text strong {
+    display: block; font-family: 'Gloock', serif;
+    font-size: 16px; color: var(--charcoal); font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .layer-callout-text span {
+    font-size: 11px; line-height: 1.55;
+    color: var(--charcoal-soft); font-weight: 300;
+  }
+  .layer-callout.left {
+    right: calc(50% + 120px);
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+  .layer-callout.left .layer-callout-line::after { right: auto; left: -3px; }
+  .layer-callout.left .layer-callout-text { border-left: none; border-right: 1px solid var(--gold); }
+  .layer-callout.right {
+    left: calc(50% + 120px);
+  }
+  @media (max-width: 1280px) {
+    .layer-callout.left { right: calc(50% + 140px); }
+    .layer-callout.right { left: calc(50% + 140px); }
+    .layer-callout-text { width: 160px; }
+    .layer-callout-line { width: 36px; }
+  }
+  .layer-progress-track {
+    position: absolute; bottom: 60px; left: 60px;
+    width: 240px;
+  }
+  .layer-progress-fill {
+    height: 100%; background: var(--sage);
+    transform-origin: left;
+    transform: scaleX(var(--progress, 0));
+    transition: transform 0.1s linear;
+  }
+  .layer-progress-label {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--charcoal-soft); margin-bottom: 12px; display: block;
+  }
+
+  /* ── PRODUCTS ── */
+  #products { background: var(--white); }
+
+  .hero-product {
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 0;
+    margin-bottom: 96px;
+    align-items: stretch;
+  }
+  .hero-product-img {
+    background: var(--cream);
+    height: 480px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-product-img .media-fill {
+    object-position: center 58%;
+  }
+  .hero-product-img svg { width: 100%; height: 100%; opacity: 0.7; }
+  .hero-product-img-label {
+    position: absolute; font-family: monospace; font-size: 11px;
+    color: var(--charcoal-soft); opacity: 0.55; letter-spacing: 0.05em;
+    text-align: center;
+  }
+  .hero-product-info {
+    background: var(--linen);
+    padding: 60px 56px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero-product-name {
+    font-family: 'Gloock', serif;
+    font-size: 38px; font-weight: 400; color: var(--charcoal);
+    margin-bottom: 16px; line-height: 1.1;
+  }
+  .hero-product-desc {
+    font-size: 14px; line-height: 1.75; color: var(--charcoal-soft);
+    font-weight: 300; margin-bottom: 28px;
+  }
+  .hero-product-features {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .product-feature {
+    font-size: 12px; letter-spacing: 0.03em; color: var(--charcoal-soft);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .product-feature::before {
+    content: ''; width: 16px; height: 1px; background: var(--sage); flex-shrink: 0;
+  }
+
+  .sizes-section { padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.08); }
+  .sizes-title {
+    font-family: 'Gloock', serif;
+    font-size: 24px; font-weight: 400; color: var(--charcoal);
+    margin-bottom: 40px;
+  }
+  .sizes-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: rgba(0,0,0,0.08);
+  }
+  .size-card {
+    background: var(--linen); padding: 36px 28px;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; position: relative;
+    transition: background 0.25s;
+  }
+  .size-card:hover { background: var(--cream); }
+  .size-card.featured { background: var(--charcoal); color: var(--white); }
+  .size-card.featured:hover { background: var(--charcoal-soft); }
+  .size-card.featured .size-name,
+  .size-card.featured .size-dim { color: var(--white); }
+  .size-card.featured .size-note { color: rgba(255,255,255,0.55); }
+  .size-card.featured .size-svg { color: var(--gold); }
+  .size-svg {
+    width: 96px; height: 56px; margin-bottom: 24px;
+    color: var(--charcoal-soft);
+  }
+  .size-name {
+    font-family: 'Gloock', serif;
+    font-size: 22px; font-weight: 400; color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .size-dim {
+    font-size: 12px; letter-spacing: 0.08em;
+    color: var(--charcoal-soft); margin-bottom: 14px;
+  }
+  .size-note {
+    font-size: 11px; line-height: 1.55; color: var(--charcoal-soft);
+    opacity: 0.7; font-weight: 300;
+  }
+  .size-badge {
+    position: absolute; top: 14px; right: 14px;
+    font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold); padding: 4px 8px;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--charcoal); color: var(--white);
+    padding: 120px 60px;
+  }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
+    margin-top: 60px;
+  }
+  .contact-info-col {
+    display: flex; flex-direction: column; gap: 36px;
+  }
+  .contact-block {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 24px;
+  }
+  .contact-block-label {
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
+  }
+  .contact-block-value {
+    font-family: 'Gloock', serif;
+    font-size: 22px; color: var(--white); font-weight: 400;
+    line-height: 1.4; margin-bottom: 6px;
+  }
+  .contact-block-value a { color: var(--white); text-decoration: none; transition: color 0.2s; }
+  .contact-block-value a:hover { color: var(--gold); }
+  .contact-block-meta {
+    font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.55);
+    font-weight: 300;
+  }
+
+  .contact-form {
+    background: rgba(255,255,255,0.04);
+    padding: 48px 44px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .contact-form-title {
+    font-family: 'Gloock', serif;
+    font-size: 24px; color: var(--white); font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .contact-form-sub {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    margin-bottom: 32px; font-weight: 300; line-height: 1.6;
+  }
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;
+  }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+  .form-field label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    padding: 10px 0;
+    font-weight: 300;
+    transition: border-color 0.2s;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--gold);
+  }
+  .form-field textarea { resize: vertical; min-height: 80px; }
+  .form-field select option { background: var(--charcoal); color: var(--white); }
+  .form-submit {
+    margin-top: 12px; width: 100%;
+    background: var(--gold); color: var(--charcoal);
+    border: none; padding: 18px;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-family: 'Urbanist', sans-serif; font-weight: 500;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .form-submit:hover { background: oklch(78% 0.1 78); }
+
+  /* ── MATERIALS ── */
+  .products-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between; margin-bottom: 72px;
+  }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .product-card {
+    background: var(--linen); padding: 0;
+    cursor: pointer; transition: transform 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .product-card:hover { transform: translateY(-4px); }
+  .product-img {
+    height: 340px; background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .product-img svg { width: 100%; height: 100%; opacity: 0.35; }
+  .product-img-label {
+    position: absolute; font-family: monospace; font-size: 10px;
+    color: var(--charcoal-soft); opacity: 0.45; letter-spacing: 0.05em;
+    text-align: center;
+  }
+  .product-badge {
+    position: absolute; top: 24px; right: 24px;
+    background: var(--charcoal); color: var(--white);
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 6px 14px;
+  }
+  .product-info { padding: 32px 32px 40px; }
+  .product-tier {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-dark); margin-bottom: 10px;
+  }
+  .product-name {
+    font-family: 'Gloock', serif;
+    font-size: 28px; font-weight: 400; color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+  .product-desc {
+    font-size: 13px; line-height: 1.65; color: var(--charcoal-soft);
+    font-weight: 300; margin-bottom: 24px;
+  }
+  .product-features {
+    display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px;
+  }
+  .product-feature {
+    font-size: 11px; letter-spacing: 0.05em; color: var(--charcoal-soft);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .product-feature::before {
+    content: ''; width: 16px; height: 1px; background: var(--sage); flex-shrink: 0;
+  }
+  .product-price {
+    font-family: 'Gloock', serif;
+    font-size: 22px; color: var(--charcoal); font-weight: 400;
+  }
+  .product-price small { font-size: 13px; font-family: 'Urbanist'; font-weight: 300; color: var(--charcoal-soft); margin-left: 4px; }
+
+  /* ── TECHNOLOGY ── */
+  #technology {
+    background: var(--linen);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0;
+  }
+  .tech-visual {
+    background: var(--cream); min-height: 680px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 60px; position: relative; overflow: hidden;
+  }
+  .tech-layers { width: 100%; max-width: 380px; }
+  .tech-layer {
+    display: flex; align-items: center; gap: 20px;
+    margin-bottom: 2px; cursor: default;
+  }
+  .tech-layer-swatch {
+    height: 40px; flex: 1; border-radius: 2px;
+    transition: transform 0.2s;
+  }
+  .tech-layer:hover .tech-layer-swatch { transform: scaleX(1.03); }
+  .tech-layer-name {
+    font-size: 11px; letter-spacing: 0.1em; width: 160px;
+    color: var(--charcoal-soft); font-weight: 400;
+  }
+  .tech-content {
+    padding: 100px 72px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .tech-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px;
+  }
+  .tech-stat {
+    padding: 28px 0; border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .tech-stat-num {
+    font-family: 'Gloock', serif;
+    font-size: 42px; font-weight: 300; color: var(--sage);
+    display: block; line-height: 1;
+  }
+  .tech-stat-label {
+    font-size: 11px; letter-spacing: 0.12em; color: var(--charcoal-soft);
+    margin-top: 8px; display: block; text-transform: uppercase;
+  }
+
+  /* ── MATERIALS ── */
+  #materials { background: var(--charcoal); color: var(--white); }
+  .materials-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 40px; margin-top: 72px;
+  }
+  .material-card {
+    border-top: 1px solid rgba(255,255,255,0.15); padding-top: 32px;
+  }
+  .material-icon {
+    width: 48px; height: 48px; margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .material-name {
+    font-family: 'Gloock', serif;
+    font-size: 22px; font-weight: 400; color: var(--white);
+    margin-bottom: 10px;
+  }
+  .material-body {
+    font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+  .certifications {
+    display: flex; gap: 32px; margin-top: 72px; padding-top: 56px;
+    border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap;
+  }
+  .cert {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.8; border: 1px solid rgba(212,175,110,0.3);
+    padding: 10px 20px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    padding: 0; background: var(--white);
+  }
+  .about-img {
+    min-height: 600px; background: var(--sage-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; position: relative; overflow: hidden;
+  }
+  .about-img svg { width: 100%; height: 100%; position: absolute; opacity: 0.25; }
+  .about-img-label {
+    position: relative; font-family: monospace; font-size: 11px;
+    color: var(--charcoal-soft); opacity: 0.6; text-align: center;
+  }
+  .about-content {
+    padding: 100px 72px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .about-quote {
+    font-family: 'Gloock', serif;
+    font-size: 32px; font-style: italic; font-weight: 300;
+    color: var(--charcoal); line-height: 1.4;
+    border-left: 3px solid var(--sage); padding-left: 28px;
+    margin: 40px 0;
+  }
+
+  /* ── BLOG ── */
+  #blog { background: var(--linen); }
+  .blog-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2px;
+    margin-top: 64px;
+  }
+  .blog-card {
+    background: var(--white); overflow: hidden;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .blog-card:hover { opacity: 0.92; }
+  .blog-card-img {
+    height: 200px; background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .blog-card:first-child .blog-card-img { height: 280px; }
+  .blog-card-img svg { width: 100%; height: 100%; opacity: 0.3; }
+  .blog-card-img-label {
+    position: absolute; font-family: monospace; font-size: 9px;
+    color: var(--charcoal-soft); opacity: 0.4; text-align: center;
+  }
+  .blog-card-body { padding: 28px 28px 36px; }
+  .blog-card-tag {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 12px; display: block;
+  }
+  .blog-card-title {
+    font-family: 'Gloock', serif;
+    font-size: 22px; font-weight: 400; line-height: 1.3;
+    color: var(--charcoal); margin-bottom: 10px;
+  }
+  .blog-card:first-child .blog-card-title { font-size: 28px; }
+  .blog-card-excerpt {
+    font-size: 13px; line-height: 1.65; color: var(--charcoal-soft);
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal); color: rgba(255,255,255,0.6);
+    padding: 80px 60px 48px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    padding-bottom: 64px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand-name {
+    font-family: 'Gloock', serif;
+    font-size: 28px; font-weight: 300; color: var(--white);
+    margin-bottom: 16px;
+  }
+  .footer-brand-desc {
+    font-size: 13px; line-height: 1.75; font-weight: 300; max-width: 280px;
+  }
+  .footer-col-title {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); margin-bottom: 24px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a {
+    font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none;
+    font-weight: 300; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 32px;
+  }
+  .footer-copy { font-size: 12px; letter-spacing: 0.04em; }
+  .footer-mark {
+    font-family: 'Gloock', serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.7;
+  }
+
+  /* ── REVEAL ANIMATION ── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="8" width="28" height="4" fill="#1a1612"/>
+      <rect x="14" y="12" width="8" height="16" fill="#1a1612"/>
+      <rect x="4" y="24" width="28" height="4" fill="#c8a84b" opacity="0.85"/>
+    </svg>
+    <span class="nav-logo-text">Truman<span>Bed &amp; Mattress</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">The Mattress</a></li>
+    <li><a href="#layer-reveal">Anatomy</a></li>
+    <li><a href="#materials">Materials</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/256705145159?text=Hello%20Truman%2C%20I%27d%20like%20to%20inquire%20about%20a%20mattress." class="nav-cta" target="_blank" rel="noopener noreferrer">Shop Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow reveal">Premium Hybrid Mattresses</p>
+    <h1 class="hero-title reveal reveal-delay-1">
+      Rest like<br><em>royalty.</em><br>Sleep like<br>science.
+    </h1>
+    <p class="hero-body reveal reveal-delay-2">
+      Individually wrapped pocket coils meet advanced memory foam in Truman's heirloom-grade hybrid mattresses engineered for those who demand the finest night's rest.
+    </p>
+    <div class="hero-actions reveal reveal-delay-3">
+      <a href="#products" class="btn-primary">Explore Collection</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div>
+        <span class="hero-stat-num">85%</span>
+        <span class="hero-stat-label">Less motion<br>transfer</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">1,000+</span>
+        <span class="hero-stat-label">Pocket coils<br>per mattress</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">25yr</span>
+        <span class="hero-stat-label">Craftsmanship<br>warranty</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <img class="media-fill" src="uploads/truhero2.jpg" alt="Truman mattress hero image" />
+    </div>
+    <div class="hero-tag">
+      <strong>The Signature</strong>
+      Our flagship hybrid now available in all sizes
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Individually Wrapped Pocket Coils</span><span class="dot">◆</span>
+    <span>Gel-Infused Memory Foam</span><span class="dot">◆</span>
+    <span>85% Less Motion Transfer</span><span class="dot">◆</span>
+    <span>25-Year Craftsmanship Warranty</span><span class="dot">◆</span>
+    <span>CertiPUR-US Certified</span><span class="dot">◆</span>
+    <span>Handcrafted in Small Batches</span><span class="dot">◆</span>
+    <!-- duplicate for seamless loop -->
+    <span>Individually Wrapped Pocket Coils</span><span class="dot">◆</span>
+    <span>Gel-Infused Memory Foam</span><span class="dot">◆</span>
+    <span>85% Less Motion Transfer</span><span class="dot">◆</span>
+    <span>25-Year Craftsmanship Warranty</span><span class="dot">◆</span>
+    <span>CertiPUR-US Certified</span><span class="dot">◆</span>
+    <span>Handcrafted in Small Batches</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <span class="section-label" style="color: var(--gold);">The Truman Promise</span>
+  <h2 class="section-title reveal" style="color: var(--white); max-width: 500px;">
+    Three pillars of<br><em>exceptional sleep</em>
+  </h2>
+  <div class="pillars-grid reveal">
+    <div class="pillar">
+      <span class="pillar-num">01</span>
+      <h3 class="pillar-title">Precision Engineering</h3>
+      <p class="pillar-body">Each coil is individually encased in its own pocket, responding independently to weight and movement. Zero partner disturbance even on your most restless nights.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">02</span>
+      <h3 class="pillar-title">Adaptive Comfort</h3>
+      <p class="pillar-body">Layers of gel-infused memory foam contour to your body's unique pressure points, delivering personalised relief without the sinking feel of traditional foam.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">03</span>
+      <h3 class="pillar-title">Enduring Craft</h3>
+      <p class="pillar-body">Every mattress is sewn with a hand-quilted knitted cover and reinforced high-density base. Backed by a 25-year warranty because quality shouldn't be temporary.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER REVEAL -->
+<section id="layer-reveal">
+  <div class="layer-stage">
+    <div class="layer-stage-inner">
+      <div class="layer-header">
+        <span class="section-label">The Anatomy of Sleep</span>
+        <h2 class="section-title" style="max-width: 420px;">Six layers,<br><em>one perfect rest</em></h2>
+        <p class="section-body" style="max-width: 380px; margin-top: 16px;">
+          Each Truman mattress is a precision composition. Scroll to see how every layer comes together.
+        </p>
+        <div class="layer-progress-track" style="position: absolute; bottom: -100px; left: 0;">
+          <span class="layer-progress-label">Assembly</span>
+          <div style="width:240px; height:1px; background: rgba(0,0,0,0.12); position: relative;">
+            <div class="layer-progress-fill" style="width:100%; height:100%; background: var(--sage); transform-origin: left; transform: scaleX(var(--progress, 0));"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-mattress" id="layer-mattress">
+        <div class="layer-piece lp-1" style="--ty: -260px;"></div>
+        <div class="layer-piece lp-2" style="--ty: -170px;"></div>
+        <div class="layer-piece lp-3" style="--ty: -90px;"></div>
+        <div class="layer-piece lp-4" style="--ty: 50px;"></div>
+        <div class="layer-piece lp-5" style="--ty: 180px;"></div>
+        <div class="layer-piece lp-6" style="--ty: 320px;"></div>
+
+        <div class="layer-callout left" data-layer="1" style="top: 26px;">
+          <div class="layer-callout-text">
+            <strong>Quilted Knit Cover</strong>
+            <span>Breathable four-way stretch knit, hypoallergenic, soft to the touch</span>
+          </div>
+          <div class="layer-callout-line"></div>
+          <span class="layer-callout-num">01</span>
+        </div>
+        <div class="layer-callout right" data-layer="2" style="top: 60px;">
+          <span class="layer-callout-num">02</span>
+          <div class="layer-callout-line"></div>
+          <div class="layer-callout-text">
+            <strong>Comfort Foam</strong>
+            <span>Adds plush softness to define the cosy sleeping zone</span>
+          </div>
+        </div>
+        <div class="layer-callout left" data-layer="3" style="top: 100px;">
+          <div class="layer-callout-text">
+            <strong>Gel Memory Foam</strong>
+            <span>Pressure relieving, contours to the body, stays cool</span>
+          </div>
+          <div class="layer-callout-line"></div>
+          <span class="layer-callout-num">03</span>
+        </div>
+        <div class="layer-callout right" data-layer="4" style="top: 138px;">
+          <span class="layer-callout-num">04</span>
+          <div class="layer-callout-line"></div>
+          <div class="layer-callout-text">
+            <strong>Convoluted Foam</strong>
+            <span>Transition layer for airflow and even weight distribution</span>
+          </div>
+        </div>
+        <div class="layer-callout left" data-layer="5" style="top: 200px;">
+          <div class="layer-callout-text">
+            <strong>Pocket Coil System</strong>
+            <span>1,400 individually wrapped springs, 85% less motion transfer</span>
+          </div>
+          <div class="layer-callout-line"></div>
+          <span class="layer-callout-num">05</span>
+        </div>
+        <div class="layer-callout right" data-layer="6" style="top: 264px;">
+          <span class="layer-callout-num">06</span>
+          <div class="layer-callout-line"></div>
+          <div class="layer-callout-text">
+            <strong>High-Density Base</strong>
+            <span>The unyielding foundation that holds it all in place</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header">
+    <div>
+      <span class="section-label">The Truman Hybrid</span>
+      <h2 class="section-title reveal">One mattress.<br><em>Every size.</em></h2>
+    </div>
+    <p class="section-body reveal" style="max-width: 380px; font-size: 14px;">
+      We make a single mattress, perfected. The same pocket-coil hybrid construction in every size, so the only thing you choose is how much of it you want to sleep on.
+    </p>
+  </div>
+
+  <div class="hero-product reveal">
+    <div class="hero-product-img">
+      <img class="media-fill" src="uploads/truman_beds_in_industry.JPG" alt="Truman hybrid mattress in production" />
+    </div>
+    <div class="hero-product-info">
+      <h3 class="hero-product-name">The Truman Hybrid</h3>
+      <p class="hero-product-desc">A single, uncompromising mattress: 1,200 individually wrapped pocket coils, gel-infused memory foam, and a hand-quilted knit cover. Built once, built right, and built for every body that lays on it.</p>
+      <div class="hero-product-features">
+        <span class="product-feature">1,200 individually wrapped pocket coils</span>
+        <span class="product-feature">Gel-infused memory foam comfort layers</span>
+        <span class="product-feature">Hand-quilted breathable knit cover</span>
+        <span class="product-feature">Medium-firm feel, sage-piped edge</span>
+        <span class="product-feature">25-year craftsmanship warranty</span>
+        <span class="product-feature">100-night home trial</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sizes-section">
+    <h3 class="sizes-title">Available sizes</h3>
+    <div class="sizes-grid">
+      <div class="size-card">
+        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="14" width="60" height="32" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+          <rect x="22" y="16" width="56" height="28" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
+        </svg>
+        <p class="size-name">Single</p>
+        <p class="size-dim">92 × 188 cm</p>
+        <p class="size-note">For one sleeper</p>
+      </div>
+      <div class="size-card">
+        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="14" width="72" height="32" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+          <rect x="16" y="16" width="68" height="28" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
+        </svg>
+        <p class="size-name">Double</p>
+        <p class="size-dim">137 × 188 cm</p>
+        <p class="size-note">Solo sleeper, extra room</p>
+      </div>
+      <div class="size-card featured">
+        <span class="size-badge">Most popular</span>
+        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="12" width="80" height="36" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+          <rect x="12" y="14" width="76" height="32" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
+        </svg>
+        <p class="size-name">Queen</p>
+        <p class="size-dim">152 × 203 cm</p>
+        <p class="size-note">Couples, generous space</p>
+      </div>
+      <div class="size-card">
+        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="10" width="88" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+          <rect x="8" y="12" width="84" height="36" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
+        </svg>
+        <p class="size-name">King</p>
+        <p class="size-dim">183 × 203 cm</p>
+        <p class="size-note">Maximum space, true luxury</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section id="materials">
+  <span class="section-label">What's Inside</span>
+  <h2 class="section-title reveal" style="color: var(--white);">Materials that<br><em>earn their place</em></h2>
+  <div class="materials-grid reveal">
+    <div class="material-card">
+      <div class="material-icon" style="color: var(--white);">◈</div>
+      <h3 class="material-name">Pocketed Steel Coils</h3>
+      <p class="material-body">Tempered steel springs, individually fabric-pocketed to eliminate partner disturbance. Precision-calibrated tension ensures longevity without sagging.</p>
+    </div>
+    <div class="material-card">
+      <div class="material-icon" style="color: var(--white);">❄</div>
+      <h3 class="material-name">Gel Memory Foam</h3>
+      <p class="material-body">Open-cell gel foam with phase-change technology dissipates body heat, maintaining an optimal sleeping temperature through the night.</p>
+    </div>
+    <div class="material-card">
+      <div class="material-icon" style="color: var(--white);">◎</div>
+      <h3 class="material-name">Knitted Fabric Cover</h3>
+      <p class="material-body">Breathable four-way stretch knit, naturally moisture-wicking and hypoallergenic. Quilted for a plush hand-feel that's both durable and supremely soft.</p>
+    </div>
+    <div class="material-card">
+      <div class="material-icon" style="color: var(--white);">▣</div>
+      <h3 class="material-name">High-Density Base</h3>
+      <p class="material-body">A 25mm high-density polyurethane base anchors the entire construction, preventing foundation flex and giving the coil system a stable, unyielding platform.</p>
+    </div>
+  </div>
+  <div class="certifications reveal">
+    <span class="cert">CertiPUR-US Certified</span>
+    <span class="cert">OEKO-TEX Standard 100</span>
+    <span class="cert">ISO 9001 Quality</span>
+    <span class="cert">Fire Safety Compliant</span>
+    <span class="cert">Non-Toxic Materials</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img">
+    <img class="media-fill" src="uploads/abbf36c8-dab0-43a9-ad5d-247a19e8180b.JPG" alt="Truman mattress workshop detail" />
+  </div>
+  <div class="about-content reveal">
+    <span class="section-label">Our Story</span>
+    <h2 class="section-title">A conviction<br>about <em>how you rest</em></h2>
+    <blockquote class="about-quote">
+      "The quality of your day begins with the quality of your night."
+    </blockquote>
+    <p class="section-body">
+      Truman was founded on a singular belief: that sleep is not a passive act, but the foundation of an extraordinary life. We engineer every mattress with the care of a craftsperson and the rigour of a scientist.
+    </p>
+    <p class="section-body" style="margin-top: 20px;">
+      Our hybrid pocket-coil system is the result of years of material research, pressure testing, and collaboration with sleep physicians. Truman mattresses are built for discerning individuals who understand that true luxury is felt not just seen.
+    </p>
+    <a href="#products" class="btn-primary" style="margin-top: 40px; display: inline-block;">Discover the Collection</a>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <span class="section-label">Sleep Science</span>
+  <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom: 0;">
+    <h2 class="section-title reveal" style="margin-bottom:0;">Insights for<br><em>better nights</em></h2>
+    <a href="#" class="btn-ghost reveal" style="margin-bottom: 8px;">All articles</a>
+  </div>
+  <div class="blog-grid reveal">
+    <div class="blog-card">
+      <div class="blog-card-img">
+        <img class="media-fill" src="uploads/75906e8e-558b-4cef-ab45-f23120121e97.JPG" alt="Mattress lifestyle in bedroom" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Sleep Science</span>
+        <h3 class="blog-card-title">Why pocket coils are the gold standard for couples who share a bed</h3>
+        <p class="blog-card-excerpt">Motion isolation isn't just about comfort research shows disrupted sleep from a partner's movement can reduce REM duration by up to 30%.</p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img">
+        <img class="media-fill" src="uploads/e0f689dc-81f4-49de-9e14-b4db49fbc644.JPG" alt="Hybrid mattress layer diagram" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Thermal Comfort</span>
+        <h3 class="blog-card-title">The link between sleep temperature and deep sleep quality</h3>
+        <p class="blog-card-excerpt">Core body temperature naturally drops during sleep onset. Gel-infused foam accelerates this process.</p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img">
+        <img class="media-fill" src="uploads/d9f325e3-1aae-496b-954e-fd00d18037b7.JPG" alt="Mattress comfort layer diagram" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Pressure Relief</span>
+        <h3 class="blog-card-title">How mattress firmness affects spinal alignment through the night</h3>
+        <p class="blog-card-excerpt">Not all "medium-firm" is equal. Layer composition determines true spinal neutrality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <span class="section-label" style="color: var(--gold);">Get in Touch</span>
+    <h2 class="section-title reveal" style="color: var(--white);">Visit our studio.<br><em>Or send us a note.</em></h2>
+    <p class="section-body reveal" style="color: rgba(255,255,255,0.6); max-width: 540px; margin-top: 20px;">
+      Mattress decisions deserve more than an online checkout. Come lie down at our flagship showroom, talk to a sleep consultant, or reach out below — we read everything ourselves.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-info-col">
+        <div class="contact-block">
+          <p class="contact-block-label">Showroom</p>
+          <p class="contact-block-value">Ntinda<br>Kampala, Uganda</p>
+          <p class="contact-block-meta">Mon–Sat, 10am – 7pm<br>Sun, 11am – 5pm<br>Private appointments by request</p>
+        </div>
+        <div class="contact-block">
+          <p class="contact-block-label">Speak to us</p>
+          <p class="contact-block-value"><a href="tel:0705145159">0705145159</a></p>
+          <p class="contact-block-meta">Sleep consultants on call<br>Mon–Fri, 9am – 6pm EAT</p>
+        </div>
+        <div class="contact-block">
+          <p class="contact-block-label">Write to us</p>
+          <p class="contact-block-value"><a href="mailto:kiaripierre0@gmail.com">kiaripierre0@gmail.com</a></p>
+          <p class="contact-block-meta">We aim to reply within one working day.</p>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-submit').textContent='Thank you — we’ll be in touch';">
+        <p class="contact-form-title">Tell us about your sleep</p>
+        <p class="contact-form-sub">A few details help us recommend the right size and prepare your visit. No spam — we'll only reply about your enquiry.</p>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-name">Your name</label>
+            <input id="cf-name" type="text" placeholder="Mr / Ms / Mx" />
+          </div>
+          <div class="form-field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" type="email" placeholder="you@example.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-size">Size of interest</label>
+            <select id="cf-size">
+              <option>Single</option>
+              <option>Double</option>
+              <option selected>Queen</option>
+              <option>King</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="cf-reason">Reason for enquiry</label>
+            <select id="cf-reason">
+              <option>Book a showroom visit</option>
+              <option>Sleep consultation</option>
+              <option>Delivery &amp; lead times</option>
+              <option>Trade / hospitality</option>
+              <option>Warranty &amp; care</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field" style="margin-bottom: 28px;">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" rows="3" placeholder="How do you sleep, and what are you looking for?"></textarea>
+        </div>
+        <button class="form-submit" type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="footer-brand-name">Truman Bed &amp; Mattress</p>
+      <p class="footer-brand-desc">Premium hybrid mattresses crafted for discerning sleepers. Pocket coil precision, memory foam luxury built to last a lifetime.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">The Mattress</p>
+      <ul class="footer-links">
+        <li><a href="#products">The Truman Hybrid</a></li>
+        <li><a href="#products">Sizes &amp; Pricing</a></li>
+        <li><a href="#layer-reveal">Anatomy</a></li>
+        <li><a href="#materials">Materials</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Company</p>
+      <ul class="footer-links">
+        <li><a href="#">About Truman</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Materials</a></li>
+        <li><a href="#">Sleep Science</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Support</p>
+      <ul class="footer-links">
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#">Delivery &amp; Returns</a></li>
+        <li><a href="#">Warranty</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Truman Bed &amp; Mattress. All rights reserved.</p>
+    <span class="footer-mark">Crafted for exceptional sleep</span>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll behavior
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+  // Layer reveal scroll animation
+  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+  const layerSection = document.getElementById('layer-reveal');
+  const pieces = document.querySelectorAll('.layer-piece');
+  const callouts = document.querySelectorAll('.layer-callout');
+  const initialOffsets = [-260, -170, -90, 50, 180, 320];
+  function updateLayers() {
+    if (!layerSection) return;
+    const rect = layerSection.getBoundingClientRect();
+    const total = layerSection.offsetHeight - window.innerHeight;
+    const scrolled = Math.max(0, -rect.top);
+    const progress = Math.min(1, Math.max(0, scrolled / total));
+    pieces.forEach((p, i) => {
+      const ty = initialOffsets[i] * (1 - Math.min(1, progress * 1.4));
+      p.style.setProperty('--ty', ty + 'px');
+    });
+    callouts.forEach((c, i) => {
+      const threshold = 0.65 + (i * 0.04);
+      c.classList.toggle('visible', progress > threshold);
+    });
+    document.documentElement.style.setProperty('--progress', progress);
+  }
+  window.addEventListener('scroll', updateLayers, { passive: true });
+  updateLayers();
+</script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentColor": "sage",
+  "heroHeadline": "Rest like royalty. Sleep like science.",
+  "showPrices": false,
+  "darkNav": false
+}/*EDITMODE-END*/;
+
+function TrumanTweaks() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    // Apply accent color
+    const root = document.documentElement;
+    if (tweaks.accentColor === 'sage') {
+      root.style.setProperty('--sage', 'oklch(52% 0.09 148)');
+      root.style.setProperty('--sage-light', 'oklch(88% 0.05 148)');
+    } else if (tweaks.accentColor === 'blue') {
+      root.style.setProperty('--sage', 'oklch(52% 0.1 230)');
+      root.style.setProperty('--sage-light', 'oklch(88% 0.06 230)');
+    } else if (tweaks.accentColor === 'terracotta') {
+      root.style.setProperty('--sage', 'oklch(55% 0.1 35)');
+      root.style.setProperty('--sage-light', 'oklch(88% 0.05 35)');
+    }
+    // Price visibility
+    document.querySelectorAll('.product-price').forEach(el => {
+      el.style.display = tweaks.showPrices ? '' : 'none';
+    });
+    // Nav background
+    const nav = document.getElementById('main-nav');
+    if (tweaks.darkNav) {
+      nav.style.background = 'var(--charcoal)';
+      nav.querySelectorAll('a').forEach(a => a.style.color = 'white');
+      nav.querySelector('.nav-logo-text').style.color = 'white';
+    } else {
+      nav.style.background = '';
+      nav.querySelectorAll('a').forEach(a => a.style.color = '');
+      nav.querySelector('.nav-logo-text').style.color = '';
+    }
+  }, [tweaks]);
+
+  return (
+    <TweaksPanel>
+      <TweakSection title="Brand Accent">
+        <TweakRadio id="accentColor" label="Accent colour" value={tweaks.accentColor}
+          options={[{value:'sage',label:'Sage'},{value:'blue',label:'Blue'},{value:'terracotta',label:'Terra'}]}
+          onChange={v => setTweak('accentColor', v)} />
+      </TweakSection>
+      <TweakSection title="Navigation">
+        <TweakToggle id="darkNav" label="Dark navigation bar" value={tweaks.darkNav}
+          onChange={v => setTweak('darkNav', v)} />
+      </TweakSection>
+      <TweakSection title="Products">
+        <TweakToggle id="showPrices" label="Show pricing" value={tweaks.showPrices}
+          onChange={v => setTweak('showPrices', v)} />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+const tweaksMountEl = document.createElement('div');
+document.body.appendChild(tweaksMountEl);
+ReactDOM.createRoot(tweaksMountEl).render(<TrumanTweaks />);
+</script>
+
+</body>
+</html>

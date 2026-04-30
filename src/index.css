@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: Inter, Urbanist, system-ui, -apple-system, sans-serif;
+  background: #f7f2ec;
+  color: #1e1b17;
+}
+
+#root {
+  min-height: 100vh;
+}
