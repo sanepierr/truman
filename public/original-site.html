@@ -114,6 +114,12 @@
     transition: background 0.25s;
   }
   .btn-primary:hover { background: var(--charcoal-soft); }
+  .btn-primary.btn-inactive {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.75;
+  }
+  .btn-primary.btn-inactive:hover { background: var(--charcoal); }
   .btn-ghost {
     font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--charcoal); text-decoration: none; font-weight: 400;
@@ -783,13 +789,122 @@
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @media (max-width: 1024px) {
+    nav, nav.scrolled { padding: 18px 20px; }
+    .nav-links { display: none; }
+    .nav-logo-mark { width: 30px; height: 30px; }
+    .nav-logo-text { font-size: 12px; letter-spacing: 0.12em; }
+    .nav-logo-text span { font-size: 8px; letter-spacing: 0.2em; }
+    .nav-cta { padding: 8px 14px; font-size: 10px; }
+
+    #hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-top: 84px;
+    }
+    .hero-left { padding: 42px 20px 32px; }
+    .hero-title { font-size: clamp(36px, 10vw, 58px); margin-bottom: 20px; }
+    .hero-body { font-size: 15px; margin-bottom: 30px; }
+    .hero-stats {
+      gap: 20px;
+      margin-top: 36px;
+      padding-top: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-right { min-height: 60vh; }
+    .hero-tag { left: 20px; right: 20px; bottom: 20px; padding: 12px 16px; }
+
+    section { padding: 88px 20px; }
+    .products-header,
+    .contact-grid,
+    #technology,
+    #about,
+    .hero-product,
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .products-header { display: grid; }
+    .pillars-grid,
+    .products-grid,
+    .materials-grid,
+    .sizes-grid,
+    .blog-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    #layer-reveal {
+      height: 220vh;
+    }
+    .layer-stage-inner {
+      width: 100%;
+      padding: 0 20px;
+      align-items: flex-end;
+    }
+    .layer-header {
+      top: 32px;
+      left: 20px;
+      right: 20px;
+    }
+    .layer-header .section-title { max-width: 100% !important; }
+    .layer-header .section-body { max-width: 100% !important; }
+    .layer-progress-track { display: none; }
+
+    .layer-mattress {
+      width: min(640px, 100%);
+      height: 390px;
+      margin-right: 0;
+      margin-top: 0;
+    }
+    .layer-callout.left { right: 16px; }
+    .layer-callout.right { left: 16px; }
+    .layer-callout-text { width: 144px; }
+    .layer-callout-line { width: 28px; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-eyebrow,
+    .section-label { letter-spacing: 0.16em; font-size: 9px; }
+    .hero-title { font-size: clamp(32px, 12vw, 46px); }
+    .hero-stat-num { font-size: 28px; }
+    .section-title { font-size: clamp(30px, 10vw, 40px); }
+    .section-body { font-size: 14px; line-height: 1.65; }
+    .pillars-grid,
+    .products-grid,
+    .materials-grid,
+    .sizes-grid,
+    .blog-grid { grid-template-columns: 1fr; }
+    .hero-product-img,
+    .product-img,
+    .blog-card-img { height: 260px; }
+    .blog-card:first-child .blog-card-img { height: 260px; }
+    .contact-form { padding: 28px 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 14px; }
+    footer { padding: 56px 20px 32px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+    #layer-reveal { height: 210vh; }
+    .layer-stage { align-items: flex-end; }
+    .layer-mattress {
+      width: 100%;
+      height: 320px;
+      margin-bottom: 30px;
+    }
+    .layer-piece {
+      transform-origin: center;
+    }
+    .layer-callout {
+      display: none;
+    }
+  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#" class="nav-logo">
+  <a href="#hero" class="nav-logo">
     <svg class="nav-logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="4" y="8" width="28" height="4" fill="#1a1612"/>
       <rect x="14" y="12" width="8" height="16" fill="#1a1612"/>
@@ -804,7 +919,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://wa.me/256705145159?text=Hello%20Truman%2C%20I%27d%20like%20to%20inquire%20about%20a%20mattress." class="nav-cta" target="_blank" rel="noopener noreferrer">Shop Now</a>
+  <a href="https://wa.me/256789587475?text=Hello%20Truman%2C%20I%27d%20like%20to%20inquire%20about%20a%20mattress." class="nav-cta" target="_blank" rel="noopener noreferrer">Shop Now</a>
 </nav>
 
 <!-- HERO -->
@@ -1095,7 +1210,7 @@
     <p class="section-body" style="margin-top: 20px;">
       Our hybrid pocket-coil system is the result of years of material research, pressure testing, and collaboration with sleep physicians. Truman mattresses are built for discerning individuals who understand that true luxury is felt not just seen.
     </p>
-    <a href="#products" class="btn-primary" style="margin-top: 40px; display: inline-block;">Discover the Collection</a>
+    <span class="btn-primary btn-inactive" style="margin-top: 40px; display: inline-block;">Discover the Collection</span>
   </div>
 </section>
 
@@ -1104,7 +1219,7 @@
   <span class="section-label">Sleep Science</span>
   <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom: 0;">
     <h2 class="section-title reveal" style="margin-bottom:0;">Insights for<br><em>better nights</em></h2>
-    <a href="#" class="btn-ghost reveal" style="margin-bottom: 8px;">All articles</a>
+    <a href="#blog" class="btn-ghost reveal" style="margin-bottom: 8px;">All articles</a>
   </div>
   <div class="blog-grid reveal">
     <div class="blog-card">
@@ -1158,7 +1273,7 @@
         </div>
         <div class="contact-block">
           <p class="contact-block-label">Speak to us</p>
-          <p class="contact-block-value"><a href="tel:0705145159">0705145159</a></p>
+          <p class="contact-block-value"><a href="tel:+256789587475">+256-789587475</a></p>
           <p class="contact-block-meta">Sleep consultants on call<br>Mon–Fri, 9am – 6pm EAT</p>
         </div>
         <div class="contact-block">
@@ -1232,19 +1347,19 @@
     <div>
       <p class="footer-col-title">Company</p>
       <ul class="footer-links">
-        <li><a href="#">About Truman</a></li>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Materials</a></li>
-        <li><a href="#">Sleep Science</a></li>
+        <li><a href="#about">About Truman</a></li>
+        <li><a href="#layer-reveal">Technology</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#blog">Sleep Science</a></li>
       </ul>
     </div>
     <div>
       <p class="footer-col-title">Support</p>
       <ul class="footer-links">
         <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#">Delivery &amp; Returns</a></li>
-        <li><a href="#">Warranty</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href="#contact">Delivery &amp; Returns</a></li>
+        <li><a href="#contact">Warranty</a></li>
+        <li><a href="#contact">FAQ</a></li>
       </ul>
     </div>
   </div>
