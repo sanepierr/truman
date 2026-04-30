@@ -253,17 +253,38 @@
     position: relative;
     width: min(1460px, 98vw);
     height: 100%;
-    display: flex; align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 56px 60px 40px;
+    box-sizing: border-box;
   }
   .layer-header {
-    position: absolute; top: 60px; left: 0;
-    z-index: 5;
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 0 28px 0;
+    z-index: 2;
+  }
+  .layer-header .section-title { max-width: 100% !important; }
+  .layer-header .section-body { max-width: 100% !important; }
+  .layer-visual-wrap {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
   .layer-mattress {
     position: relative;
     width: 860px; height: 520px;
-    margin-left: auto; margin-right: 0;
-    margin-top: 46px;
+    margin: 0 auto;
     perspective: 1400px;
   }
   .layer-piece {
@@ -346,8 +367,9 @@
     .layer-callout-line { width: 36px; }
   }
   .layer-progress-track {
-    position: absolute; bottom: 60px; left: 60px;
+    position: relative;
     width: 240px;
+    margin-top: 24px;
   }
   .layer-progress-fill {
     height: 100%; background: var(--sage);
@@ -373,27 +395,6 @@
     font-size: 16px;
     font-weight: 400;
     margin-right: 8px;
-  }
-
-  @media (min-width: 1281px) {
-    .layer-stage-inner {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding-top: 72px;
-    }
-    .layer-header {
-      position: relative;
-      top: auto;
-      left: auto;
-      margin-bottom: 22px;
-      max-width: 760px;
-    }
-    .layer-mattress {
-      width: min(980px, 92vw);
-      height: 520px;
-      margin: 0 auto;
-    }
   }
 
   /* ── PRODUCTS ── */
@@ -784,7 +785,8 @@
     padding: 80px 60px 48px;
   }
   .footer-top {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    display: grid; grid-template-columns: 2fr auto; gap: 40px 60px;
+    align-items: start;
     padding-bottom: 64px; border-bottom: 1px solid rgba(255,255,255,0.1);
   }
   .footer-brand-name {
@@ -878,17 +880,19 @@
     }
     .layer-stage-inner {
       width: 100%;
-      padding: 0 20px;
-      align-items: flex-end;
+      padding: 40px 20px 24px;
+      align-items: flex-start;
+      flex-direction: column;
     }
     .layer-header {
-      top: 32px;
-      left: 20px;
-      right: 20px;
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      margin: 0 0 20px 0;
     }
     .layer-header .section-title { max-width: 100% !important; }
     .layer-header .section-body { max-width: 100% !important; }
-    .layer-progress-track { display: none; }
 
     .layer-mattress {
       width: min(640px, 100%);
@@ -926,6 +930,7 @@
     .contact-form { padding: 28px 20px; }
     .form-row { grid-template-columns: 1fr; gap: 14px; }
     footer { padding: 56px 20px 32px; }
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
 
     #layer-reveal { height: 165vh; }
@@ -933,15 +938,20 @@
     .layer-stage-inner {
       align-items: flex-start;
       flex-direction: column;
+      padding: 28px 16px 20px;
     }
     .layer-header {
       position: relative;
       top: auto;
       left: auto;
       right: auto;
-      margin-top: 24px;
-      margin-bottom: 20px;
+      margin: 0 0 16px 0;
       z-index: 1;
+    }
+    .layer-visual-wrap {
+      overflow: visible;
+      align-items: stretch;
+      width: 100%;
     }
     .layer-mattress {
       width: 100%;
@@ -1076,11 +1086,11 @@
     <div class="layer-stage-inner">
       <div class="layer-header">
         <span class="section-label">The Anatomy of Sleep</span>
-        <h2 class="section-title" style="max-width: 420px;">Six layers,<br><em>one perfect rest</em></h2>
-        <p class="section-body" style="max-width: 380px; margin-top: 16px;">
+        <h2 class="section-title">Six layers,<br><em>one perfect rest</em></h2>
+        <p class="section-body" style="margin-top: 16px;">
           Each Truman mattress is a precision composition. Scroll to see how every layer comes together.
         </p>
-        <div class="layer-progress-track" style="position: absolute; bottom: -100px; left: 0;">
+        <div class="layer-progress-track">
           <span class="layer-progress-label">Assembly</span>
           <div style="width:240px; height:1px; background: rgba(0,0,0,0.12); position: relative;">
             <div class="layer-progress-fill" style="width:100%; height:100%; background: var(--sage); transform-origin: left; transform: scaleX(var(--progress, 0));"></div>
@@ -1088,6 +1098,7 @@
         </div>
       </div>
 
+      <div class="layer-visual-wrap">
       <div class="layer-mattress" id="layer-mattress">
         <div class="layer-piece lp-1" style="--ty: -260px;"></div>
         <div class="layer-piece lp-2" style="--ty: -170px;"></div>
@@ -1152,6 +1163,7 @@
         <div class="layer-mobile-label"><strong>04</strong>Convoluted Foam</div>
         <div class="layer-mobile-label"><strong>05</strong>Pocket Coil System</div>
         <div class="layer-mobile-label"><strong>06</strong>High-Density Base</div>
+      </div>
       </div>
     </div>
   </div>
@@ -1409,30 +1421,9 @@
       <p class="footer-brand-desc">Premium hybrid mattresses crafted for discerning sleepers. Pocket coil precision, memory foam luxury built to last a lifetime.</p>
     </div>
     <div>
-      <p class="footer-col-title">The Mattress</p>
-      <ul class="footer-links">
-        <li><a href="#products">The Truman Hybrid</a></li>
-        <li><a href="#products">Sizes &amp; Pricing</a></li>
-        <li><a href="#layer-reveal">Anatomy</a></li>
-        <li><a href="#materials">Materials</a></li>
-      </ul>
-    </div>
-    <div>
-      <p class="footer-col-title">Company</p>
-      <ul class="footer-links">
-        <li><a href="#about">About Truman</a></li>
-        <li><a href="#layer-reveal">Technology</a></li>
-        <li><a href="#materials">Materials</a></li>
-        <li><a href="#blog">Sleep Science</a></li>
-      </ul>
-    </div>
-    <div>
-      <p class="footer-col-title">Support</p>
+      <p class="footer-col-title">Contact</p>
       <ul class="footer-links">
         <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#contact">Delivery &amp; Returns</a></li>
-        <li><a href="#contact">Warranty</a></li>
-        <li><a href="#contact">FAQ</a></li>
       </ul>
     </div>
   </div>
