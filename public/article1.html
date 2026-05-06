@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why pocket coils are the gold standard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Urbanist:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --linen: oklch(96.5% 0.012 82);
+    --charcoal: oklch(14% 0.01 72);
+    --sage: oklch(52% 0.09 148);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Urbanist', sans-serif;
+    background: var(--linen);
+    color: var(--charcoal);
+    padding: 60px 20px;
+  }
+  .article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    background: #fff;
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+  }
+  .overlay {
+    position: fixed; inset: 0; z-index: 1; cursor: pointer;
+  }
+  .back-btn {
+    position: fixed; top: 20px; left: 20px; z-index: 100;
+    background: #fff; border-radius: 30px; padding: 12px 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none; color: var(--charcoal);
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .back-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); color: var(--charcoal); }
+  .article-title {
+    font-family: 'Gloock', serif;
+    font-size: 42px; font-weight: 300; line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .article-img {
+    width: 100%; height: 400px; object-fit: cover;
+    margin-bottom: 40px; border-radius: 4px;
+  }
+  .article-body {
+    font-size: 16px; line-height: 1.8; font-weight: 300;
+  }
+  .article-body p { margin-bottom: 20px; }
+  @media (max-width: 640px) {
+    .article-container { padding: 30px 20px; }
+    .article-title { font-size: 32px; }
+    .article-img { height: 260px; }
+  }
+</style>
+</head>
+<body>
+  <div class="overlay" onclick="window.location.href='index.html#blog'"></div>
+  <a href="index.html#blog" class="back-btn">← Back to Articles</a>
+  <div class="article-container">
+    <h1 class="article-title">Why pocket coils are the gold standard for couples who share a bed</h1>
+    <img src="new_batch/PHOTO-2026-05-01-10-01-22 2.jpg" alt="Pocket coils" class="article-img" />
+    <div class="article-body">
+      <p>Motion isolation isn't just about comfort; research shows disrupted sleep from a partner's movement can reduce REM duration by up to 30%. When you share a bed, every toss and turn has the potential to pull your partner out of deep sleep.</p>
+      <p>This is where individually wrapped pocket coils make a transformative difference. Unlike traditional innerspring systems where coils are wired together, pocket coils move independently. When weight is applied to one coil, the surrounding coils remain unaffected.</p>
+      <p>At Truman, our 1,400-coil system guarantees 85% less motion transfer. It's the gold standard in sleep science, ensuring that you and your partner can rest undisturbed, no matter the circumstances.</p>
+    </div>
+  </div>
+</body>
+</html>

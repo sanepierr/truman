@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The importance of high-density bases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Urbanist:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --linen: oklch(96.5% 0.012 82);
+    --charcoal: oklch(14% 0.01 72);
+    --sage: oklch(52% 0.09 148);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Urbanist', sans-serif;
+    background: var(--linen);
+    color: var(--charcoal);
+    padding: 60px 20px;
+  }
+  .article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    background: #fff;
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+  }
+  .overlay {
+    position: fixed; inset: 0; z-index: 1; cursor: pointer;
+  }
+  .back-btn {
+    position: fixed; top: 20px; left: 20px; z-index: 100;
+    background: #fff; border-radius: 30px; padding: 12px 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none; color: var(--charcoal);
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .back-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); color: var(--charcoal); }
+  .article-title {
+    font-family: 'Gloock', serif;
+    font-size: 42px; font-weight: 300; line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .article-img {
+    width: 100%; height: 400px; object-fit: cover;
+    margin-bottom: 40px; border-radius: 4px;
+  }
+  .article-body {
+    font-size: 16px; line-height: 1.8; font-weight: 300;
+  }
+  .article-body p { margin-bottom: 20px; }
+  @media (max-width: 640px) {
+    .article-container { padding: 30px 20px; }
+    .article-title { font-size: 32px; }
+    .article-img { height: 260px; }
+  }
+</style>
+</head>
+<body>
+  <div class="overlay" onclick="window.location.href='index.html#blog'"></div>
+  <a href="index.html#blog" class="back-btn">← Back to Articles</a>
+  <div class="article-container">
+    <h1 class="article-title">The importance of high-density bases in mattress longevity</h1>
+    <img src="new_batch/PHOTO-2026-05-01-10-01-23.jpg" alt="Mattress durability" class="article-img" />
+    <div class="article-body">
+      <p>A mattress is a substantial investment, and its lifespan is heavily dictated by what lies at the very bottom. Without a proper foundation, even the most premium comfort layers will begin to sag prematurely.</p>
+      <p>High-density bases provide the crucial structural integrity needed to support the pocket coil system above. They act as a shock absorber, diffusing pressure across the entire surface area of the bed and preventing localized wear and tear.</p>
+      <p>At Truman, our uncompromising high-density base is what enables us to confidently ensure your mattress feels the same on day 3,000 as it did on day one.</p>
+    </div>
+  </div>
+</body>
+</html>
