@@ -302,12 +302,14 @@
     opacity: 0.7;
     pointer-events: none;
   }
-  .lp-1 { top: 30px; height: 32px; background: linear-gradient(180deg, #d8c9a8 0%, #c9b78f 100%); --tex: radial-gradient(circle at 12px 12px, rgba(0,0,0,0.18) 1px, transparent 1.6px) 0 0/22px 22px; box-shadow: 0 2px 0 rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.35); }
-  .lp-2 { top: 64px; height: 26px; background: linear-gradient(180deg, #b8a47c 0%, #a18d68 100%); --tex: repeating-linear-gradient(45deg, rgba(0,0,0,0.08) 0 2px, transparent 2px 6px); box-shadow: 0 2px 0 rgba(0,0,0,0.06); }
-  .lp-3 { top: 92px; height: 36px; background: linear-gradient(180deg, #2a2a30 0%, #1a1a1f 100%); --tex: repeating-linear-gradient(90deg, transparent 0 8px, rgba(255,255,255,0.04) 8px 9px); }
-  .lp-4 { top: 130px; height: 30px; background: #d4d0c8; --tex: repeating-linear-gradient(90deg, rgba(0,0,0,0.06) 0 3px, transparent 3px 8px); }
-  .lp-5 { top: 162px; height: 96px; background: linear-gradient(180deg, var(--sage) 0%, oklch(45% 0.09 148) 100%); --tex: repeating-linear-gradient(90deg, rgba(255,255,255,0.18) 0 6px, transparent 6px 14px, rgba(0,0,0,0.18) 14px 16px, transparent 16px 22px); }
-  .lp-6 { top: 260px; height: 24px; background: linear-gradient(180deg, #2a261f 0%, #1a1612 100%); }
+  .lp-1 { top: 20px; height: 32px; background: linear-gradient(180deg, #d8c9a8 0%, #c9b78f 100%); --tex: radial-gradient(circle at 12px 12px, rgba(0,0,0,0.18) 1px, transparent 1.6px) 0 0/22px 22px; box-shadow: 0 2px 0 rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.35); }
+  .lp-2 { top: 54px; height: 26px; background: linear-gradient(180deg, #b8a47c 0%, #a18d68 100%); --tex: repeating-linear-gradient(45deg, rgba(0,0,0,0.08) 0 2px, transparent 2px 6px); box-shadow: 0 2px 0 rgba(0,0,0,0.06); }
+  .lp-3 { top: 82px; height: 36px; background: linear-gradient(180deg, #2a2a30 0%, #1a1a1f 100%); --tex: repeating-linear-gradient(90deg, transparent 0 8px, rgba(255,255,255,0.04) 8px 9px); }
+  .lp-4 { top: 120px; height: 30px; background: #d4d0c8; --tex: repeating-linear-gradient(90deg, rgba(0,0,0,0.06) 0 3px, transparent 3px 8px); }
+  .lp-5 { top: 152px; height: 30px; background: linear-gradient(180deg, #b5b8c0 0%, #a0a4ac 100%); --tex: repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0 4px, transparent 4px 10px); }
+  .lp-6 { top: 184px; height: 34px; background: linear-gradient(180deg, #d8d4cd 0%, #cfcac2 100%); }
+  .lp-7 { top: 220px; height: 96px; background: linear-gradient(180deg, var(--sage) 0%, oklch(45% 0.09 148) 100%); --tex: repeating-linear-gradient(90deg, rgba(255,255,255,0.18) 0 6px, transparent 6px 14px, rgba(0,0,0,0.18) 14px 16px, transparent 16px 22px); }
+  .lp-8 { top: 318px; height: 24px; background: linear-gradient(180deg, #2a261f 0%, #1a1612 100%); }
 
   .layer-callout {
     position: absolute;
@@ -381,21 +383,8 @@
     font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
     color: var(--charcoal-soft); margin-bottom: 12px; display: block;
   }
-  .layer-mobile-labels { display: none; }
-  .layer-mobile-label {
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--charcoal-soft);
-    border-top: 1px solid rgba(0,0,0,0.08);
-    padding: 10px 0;
-  }
-  .layer-mobile-label strong {
-    font-family: 'Gloock', serif;
-    color: var(--charcoal);
-    font-size: 16px;
-    font-weight: 400;
-    margin-right: 8px;
-  }
+  .mobile-piece-label { display: none; }
+
 
   /* ── PRODUCTS ── */
   #products { background: var(--white); }
@@ -452,7 +441,7 @@
     margin-bottom: 40px;
   }
   .sizes-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
     background: rgba(0,0,0,0.08);
   }
   .size-card {
@@ -495,7 +484,7 @@
   /* ── CONTACT ── */
   #contact {
     background: var(--charcoal); color: var(--white);
-    padding: 120px 60px;
+    padding: 80px 60px;
   }
   .contact-grid {
     display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
@@ -744,26 +733,27 @@
   /* ── BLOG ── */
   #blog { background: var(--linen); }
   .blog-grid {
-    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
     margin-top: 64px;
   }
   .blog-card {
     background: var(--white); overflow: hidden;
-    cursor: pointer; transition: opacity 0.2s;
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none; color: inherit; display: block;
+    border: 1px solid rgba(0,0,0,0.05);
   }
-  .blog-card:hover { opacity: 0.92; }
+  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.05); }
   .blog-card-img {
-    height: 200px; background: var(--cream);
+    height: 220px; background: var(--cream);
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
   }
-  .blog-card:first-child .blog-card-img { height: 280px; }
   .blog-card-img svg { width: 100%; height: 100%; opacity: 0.3; }
   .blog-card-img-label {
     position: absolute; font-family: monospace; font-size: 9px;
     color: var(--charcoal-soft); opacity: 0.4; text-align: center;
   }
-  .blog-card-body { padding: 28px 28px 36px; }
+  .blog-card-body { padding: 28px 24px 36px; }
   .blog-card-tag {
     font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
     color: var(--sage); margin-bottom: 12px; display: block;
@@ -773,7 +763,6 @@
     font-size: 22px; font-weight: 400; line-height: 1.3;
     color: var(--charcoal); margin-bottom: 10px;
   }
-  .blog-card:first-child .blog-card-title { font-size: 28px; }
   .blog-card-excerpt {
     font-size: 13px; line-height: 1.65; color: var(--charcoal-soft);
     font-weight: 300;
@@ -782,20 +771,6 @@
   /* ── FOOTER ── */
   footer {
     background: var(--charcoal); color: rgba(255,255,255,0.6);
-    padding: 80px 60px 48px;
-  }
-  .footer-top {
-    display: grid; grid-template-columns: 2fr auto; gap: 40px 60px;
-    align-items: start;
-    padding-bottom: 64px; border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .footer-brand-name {
-    font-family: 'Gloock', serif;
-    font-size: 28px; font-weight: 300; color: var(--white);
-    margin-bottom: 16px;
-  }
-  .footer-brand-desc {
-    font-size: 13px; line-height: 1.75; font-weight: 300; max-width: 280px;
   }
   .footer-col-title {
     font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
@@ -840,6 +815,7 @@
       grid-template-columns: 1fr;
       min-height: auto;
       padding-top: 84px;
+      padding-left: 0; padding-right: 0;
     }
     .hero-left { padding: 42px 20px 32px; }
     .hero-title { font-size: clamp(36px, 10vw, 58px); margin-bottom: 20px; }
@@ -853,7 +829,7 @@
     .hero-right { min-height: 60vh; }
     .hero-tag { left: 20px; right: 20px; bottom: 20px; padding: 12px 16px; }
 
-    section { padding: 88px 20px; }
+    section { padding: 88px 16px; }
     .products-header,
     .contact-grid,
     #technology,
@@ -909,25 +885,40 @@
   @media (max-width: 640px) {
     .hero-eyebrow,
     .section-label { letter-spacing: 0.16em; font-size: 9px; }
-    .hero-title { font-size: clamp(32px, 12vw, 46px); }
-    .hero-stat-num { font-size: 28px; }
-    .section-title { font-size: clamp(30px, 10vw, 40px); }
-    .section-body { font-size: 14px; line-height: 1.65; }
-    .pillars-grid,
-    .products-grid,
-    .materials-grid,
-    .blog-grid { grid-template-columns: 1fr; }
-    .sizes-grid { grid-template-columns: 1fr 1fr; }
-    .size-card { padding: 22px 14px; }
-    .size-name { font-size: 18px; }
-    .size-dim { font-size: 11px; }
-    .size-note { font-size: 10px; }
-    .pillar { padding: 26px 18px; }
+    .hero-title { font-size: clamp(24px, 8vw, 36px); }
+    .hero-stat-num { font-size: 20px; }
+    .section-title { font-size: clamp(24px, 8vw, 32px); }
+    .section-body { font-size: 13px; line-height: 1.5; }
+    
+    .certifications { gap: 12px; margin-top: 40px; padding-top: 24px; justify-content: flex-start; }
+    .cert { font-size: 10px; padding: 6px 12px; background: rgba(255,255,255,0.05); border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
+    
+    .hero-product-info { padding: 24px 0 0 0; }
+    
+    .mobile-piece-label {
+      display: block; position: absolute; left: 50%; top: 35px; transform: translate(-50%, 0);
+      font-size: 10px; color: var(--charcoal); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+      background: rgba(255,255,255,0.9); padding: 4px 10px; border-radius: 20px;
+      white-space: nowrap; opacity: var(--txt-opacity, 1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .size-name { font-size: 13px; }
+    .size-dim { font-size: 9px; }
+    .size-note { font-size: 8px; }
+    
+    .material-icon { font-size: 20px; margin-bottom: 12px; }
+    .material-name { font-size: 14px; margin-bottom: 8px; }
+    .material-body { font-size: 11px; line-height: 1.4; }
+    
+    .blog-card-title { font-size: 14px; }
+    .blog-card-excerpt { font-size: 11px; }
+    
     .hero-product-img,
     .product-img,
-    .blog-card-img { height: 260px; }
-    .blog-card:first-child .blog-card-img { height: 260px; }
-    .contact-form { padding: 28px 20px; }
+    .blog-card-img { height: 160px; }
+    .blog-card:first-child .blog-card-img { height: 160px; }
+    #contact { padding: 40px 16px; }
+    .contact-form { padding: 28px 16px; }
     .form-row { grid-template-columns: 1fr; gap: 14px; }
     footer { padding: 56px 20px 32px; }
     .footer-top { grid-template-columns: 1fr; gap: 28px; }
@@ -955,7 +946,7 @@
     }
     .layer-mattress {
       width: 100%;
-      height: 300px;
+      height: 440px;
       margin-top: 12px;
       margin-bottom: 20px;
     }
@@ -1019,10 +1010,6 @@
         <span class="hero-stat-num">1,000+</span>
         <span class="hero-stat-label">Pocket coils<br>per mattress</span>
       </div>
-      <div>
-        <span class="hero-stat-num">25yr</span>
-        <span class="hero-stat-label">Craftsmanship<br>warranty</span>
-      </div>
     </div>
   </div>
   <div class="hero-right">
@@ -1042,206 +1029,16 @@
     <span>Individually Wrapped Pocket Coils</span><span class="dot">◆</span>
     <span>Gel-Infused Memory Foam</span><span class="dot">◆</span>
     <span>85% Less Motion Transfer</span><span class="dot">◆</span>
-    <span>25-Year Craftsmanship Warranty</span><span class="dot">◆</span>
     <span>CertiPUR-US Certified</span><span class="dot">◆</span>
     <span>Handcrafted in Small Batches</span><span class="dot">◆</span>
     <!-- duplicate for seamless loop -->
     <span>Individually Wrapped Pocket Coils</span><span class="dot">◆</span>
     <span>Gel-Infused Memory Foam</span><span class="dot">◆</span>
     <span>85% Less Motion Transfer</span><span class="dot">◆</span>
-    <span>25-Year Craftsmanship Warranty</span><span class="dot">◆</span>
     <span>CertiPUR-US Certified</span><span class="dot">◆</span>
     <span>Handcrafted in Small Batches</span><span class="dot">◆</span>
   </div>
 </div>
-
-<!-- PILLARS -->
-<section id="pillars">
-  <span class="section-label" style="color: var(--gold);">The Truman Promise</span>
-  <h2 class="section-title reveal" style="color: var(--white); max-width: 500px;">
-    Three pillars of<br><em>exceptional sleep</em>
-  </h2>
-  <div class="pillars-grid reveal">
-    <div class="pillar">
-      <span class="pillar-num">01</span>
-      <h3 class="pillar-title">Precision Engineering</h3>
-      <p class="pillar-body">Each coil is individually encased in its own pocket, responding independently to weight and movement. Zero partner disturbance even on your most restless nights.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-num">02</span>
-      <h3 class="pillar-title">Adaptive Comfort</h3>
-      <p class="pillar-body">Layers of gel-infused memory foam contour to your body's unique pressure points, delivering personalised relief without the sinking feel of traditional foam.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-num">03</span>
-      <h3 class="pillar-title">Enduring Craft</h3>
-      <p class="pillar-body">Every mattress is sewn with a hand-quilted knitted cover and reinforced high-density base. Backed by a 25-year warranty because quality shouldn't be temporary.</p>
-    </div>
-  </div>
-</section>
-
-<!-- LAYER REVEAL -->
-<section id="layer-reveal">
-  <div class="layer-stage">
-    <div class="layer-stage-inner">
-      <div class="layer-header">
-        <span class="section-label">The Anatomy of Sleep</span>
-        <h2 class="section-title">Six layers,<br><em>one perfect rest</em></h2>
-        <p class="section-body" style="margin-top: 16px;">
-          Each Truman mattress is a precision composition. Scroll to see how every layer comes together.
-        </p>
-        <div class="layer-progress-track">
-          <span class="layer-progress-label">Assembly</span>
-          <div style="width:240px; height:1px; background: rgba(0,0,0,0.12); position: relative;">
-            <div class="layer-progress-fill" style="width:100%; height:100%; background: var(--sage); transform-origin: left; transform: scaleX(var(--progress, 0));"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="layer-visual-wrap">
-      <div class="layer-mattress" id="layer-mattress">
-        <div class="layer-piece lp-1" style="--ty: -260px;"></div>
-        <div class="layer-piece lp-2" style="--ty: -170px;"></div>
-        <div class="layer-piece lp-3" style="--ty: -90px;"></div>
-        <div class="layer-piece lp-4" style="--ty: 50px;"></div>
-        <div class="layer-piece lp-5" style="--ty: 180px;"></div>
-        <div class="layer-piece lp-6" style="--ty: 320px;"></div>
-
-        <div class="layer-callout left" data-layer="1" style="top: 26px;">
-          <div class="layer-callout-text">
-            <strong>Quilted Knit Cover</strong>
-            <span>Breathable four-way stretch knit, hypoallergenic, soft to the touch</span>
-          </div>
-          <div class="layer-callout-line"></div>
-          <span class="layer-callout-num">01</span>
-        </div>
-        <div class="layer-callout right" data-layer="2" style="top: 60px;">
-          <span class="layer-callout-num">02</span>
-          <div class="layer-callout-line"></div>
-          <div class="layer-callout-text">
-            <strong>Comfort Foam</strong>
-            <span>Adds plush softness to define the cosy sleeping zone</span>
-          </div>
-        </div>
-        <div class="layer-callout left" data-layer="3" style="top: 100px;">
-          <div class="layer-callout-text">
-            <strong>Gel Memory Foam</strong>
-            <span>Pressure relieving, contours to the body, stays cool</span>
-          </div>
-          <div class="layer-callout-line"></div>
-          <span class="layer-callout-num">03</span>
-        </div>
-        <div class="layer-callout right" data-layer="4" style="top: 138px;">
-          <span class="layer-callout-num">04</span>
-          <div class="layer-callout-line"></div>
-          <div class="layer-callout-text">
-            <strong>Convoluted Foam</strong>
-            <span>Transition layer for airflow and even weight distribution</span>
-          </div>
-        </div>
-        <div class="layer-callout left" data-layer="5" style="top: 200px;">
-          <div class="layer-callout-text">
-            <strong>Pocket Coil System</strong>
-            <span>1,400 individually wrapped springs, 85% less motion transfer</span>
-          </div>
-          <div class="layer-callout-line"></div>
-          <span class="layer-callout-num">05</span>
-        </div>
-        <div class="layer-callout right" data-layer="6" style="top: 264px;">
-          <span class="layer-callout-num">06</span>
-          <div class="layer-callout-line"></div>
-          <div class="layer-callout-text">
-            <strong>High-Density Base</strong>
-            <span>The unyielding foundation that holds it all in place</span>
-          </div>
-        </div>
-      </div>
-      <div class="layer-mobile-labels" aria-hidden="true">
-        <div class="layer-mobile-label"><strong>01</strong>Quilted Knit Cover</div>
-        <div class="layer-mobile-label"><strong>02</strong>Comfort Foam</div>
-        <div class="layer-mobile-label"><strong>03</strong>Gel Memory Foam</div>
-        <div class="layer-mobile-label"><strong>04</strong>Convoluted Foam</div>
-        <div class="layer-mobile-label"><strong>05</strong>Pocket Coil System</div>
-        <div class="layer-mobile-label"><strong>06</strong>High-Density Base</div>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section id="products">
-  <div class="products-header">
-    <div>
-      <span class="section-label">The Truman Hybrid</span>
-      <h2 class="section-title reveal">One mattress.<br><em>Every size.</em></h2>
-    </div>
-    <p class="section-body reveal" style="max-width: 380px; font-size: 14px;">
-      We make a single mattress, perfected. The same pocket-coil hybrid construction in every size, so the only thing you choose is how much of it you want to sleep on.
-    </p>
-  </div>
-
-  <div class="hero-product reveal">
-    <div class="hero-product-img">
-      <img class="media-fill" src="uploads/truman_beds_in_industry.JPG" alt="Truman hybrid mattress in production" />
-    </div>
-    <div class="hero-product-info">
-      <h3 class="hero-product-name">The Truman Hybrid</h3>
-      <p class="hero-product-desc">A single, uncompromising mattress: 1,200 individually wrapped pocket coils, gel-infused memory foam, and a hand-quilted knit cover. Built once, built right, and built for every body that lays on it.</p>
-      <div class="hero-product-features">
-        <span class="product-feature">1,200 individually wrapped pocket coils</span>
-        <span class="product-feature">Gel-infused memory foam comfort layers</span>
-        <span class="product-feature">Hand-quilted breathable knit cover</span>
-        <span class="product-feature">Medium-firm feel, sage-piped edge</span>
-        <span class="product-feature">25-year craftsmanship warranty</span>
-        <span class="product-feature">100-night home trial</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="sizes-section">
-    <h3 class="sizes-title">Available sizes</h3>
-    <div class="sizes-grid">
-      <div class="size-card">
-        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="20" y="14" width="60" height="32" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
-          <rect x="22" y="16" width="56" height="28" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
-        </svg>
-        <p class="size-name">Single</p>
-        <p class="size-dim">92 × 188 cm</p>
-        <p class="size-note">For one sleeper</p>
-      </div>
-      <div class="size-card">
-        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="14" y="14" width="72" height="32" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
-          <rect x="16" y="16" width="68" height="28" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
-        </svg>
-        <p class="size-name">Double</p>
-        <p class="size-dim">137 × 188 cm</p>
-        <p class="size-note">Solo sleeper, extra room</p>
-      </div>
-      <div class="size-card featured">
-        <span class="size-badge">Most popular</span>
-        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="12" width="80" height="36" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
-          <rect x="12" y="14" width="76" height="32" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
-        </svg>
-        <p class="size-name">Queen</p>
-        <p class="size-dim">152 × 203 cm</p>
-        <p class="size-note">Couples, generous space</p>
-      </div>
-      <div class="size-card">
-        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="10" width="88" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
-          <rect x="8" y="12" width="84" height="36" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
-        </svg>
-        <p class="size-name">King</p>
-        <p class="size-dim">183 × 203 cm</p>
-        <p class="size-note">Maximum space, true luxury</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- MATERIALS -->
 <section id="materials">
@@ -1278,6 +1075,172 @@
   </div>
 </section>
 
+<!-- LAYER REVEAL -->
+<section id="layer-reveal">
+  <div class="layer-stage">
+    <div class="layer-stage-inner">
+      <div class="layer-header">
+        <span class="section-label">The Anatomy of Sleep</span>
+        <h2 class="section-title">Eight layers,<br><em>one perfect rest</em></h2>
+        <p class="section-body" style="margin-top: 16px;">
+          Each Truman mattress is a precision composition. Scroll to see how every layer comes together.
+        </p>
+        <div class="layer-progress-track">
+          <span class="layer-progress-label">Assembly</span>
+          <div style="width:240px; height:1px; background: rgba(0,0,0,0.12); position: relative;">
+            <div class="layer-progress-fill" style="width:100%; height:100%; background: var(--sage); transform-origin: left; transform: scaleX(var(--progress, 0));"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-visual-wrap">
+      <div class="layer-mattress" id="layer-mattress">
+        <div class="layer-piece lp-1" style="--ty: -320px;"><span class="mobile-piece-label">01 Quilted Knit Cover</span></div>
+        <div class="layer-piece lp-2" style="--ty: -240px;"><span class="mobile-piece-label">02 Comfort Foam</span></div>
+        <div class="layer-piece lp-3" style="--ty: -160px;"><span class="mobile-piece-label">03 Gel Memory Foam</span></div>
+        <div class="layer-piece lp-4" style="--ty: -80px;"><span class="mobile-piece-label">04 Convoluted Foam</span></div>
+        <div class="layer-piece lp-5" style="--ty: 0px;"><span class="mobile-piece-label">05 High-Resilience Foam</span></div>
+        <div class="layer-piece lp-6" style="--ty: 80px;"><span class="mobile-piece-label">06 Adaptive Support Foam</span></div>
+        <div class="layer-piece lp-7" style="--ty: 200px;"><span class="mobile-piece-label">07 Pocket Coil System</span></div>
+        <div class="layer-piece lp-8" style="--ty: 340px;"><span class="mobile-piece-label">08 High-Density Base</span></div>
+
+        <div class="layer-callout left" data-layer="1" style="top: 16px;">
+          <div class="layer-callout-text">
+            <strong>Quilted Knit Cover</strong>
+            <span>Breathable four-way stretch knit, hypoallergenic, soft to the touch</span>
+          </div>
+          <div class="layer-callout-line"></div>
+          <span class="layer-callout-num">01</span>
+        </div>
+        <div class="layer-callout right" data-layer="2" style="top: 48px;">
+          <span class="layer-callout-num">02</span>
+          <div class="layer-callout-line"></div>
+          <div class="layer-callout-text">
+            <strong>Comfort Foam</strong>
+            <span>Adds plush softness to define the cosy sleeping zone</span>
+          </div>
+        </div>
+        <div class="layer-callout left" data-layer="3" style="top: 80px;">
+          <div class="layer-callout-text">
+            <strong>Gel Memory Foam</strong>
+            <span>Pressure relieving, contours to the body, stays cool</span>
+          </div>
+          <div class="layer-callout-line"></div>
+          <span class="layer-callout-num">03</span>
+        </div>
+        <div class="layer-callout right" data-layer="4" style="top: 112px;">
+          <span class="layer-callout-num">04</span>
+          <div class="layer-callout-line"></div>
+          <div class="layer-callout-text">
+            <strong>Convoluted Foam</strong>
+            <span>Transition layer for airflow and even weight distribution</span>
+          </div>
+        </div>
+        <div class="layer-callout left" data-layer="5" style="top: 144px;">
+          <div class="layer-callout-text">
+            <strong>High-Resilience Foam</strong>
+            <span>Responsive support that adapts quickly to your movement</span>
+          </div>
+          <div class="layer-callout-line"></div>
+          <span class="layer-callout-num">05</span>
+        </div>
+        <div class="layer-callout right" data-layer="6" style="top: 176px;">
+          <span class="layer-callout-num">06</span>
+          <div class="layer-callout-line"></div>
+          <div class="layer-callout-text">
+            <strong>Adaptive Support Foam</strong>
+            <span>Deep compression support preventing sinkage</span>
+          </div>
+        </div>
+        <div class="layer-callout left" data-layer="7" style="top: 240px;">
+          <div class="layer-callout-text">
+            <strong>Pocket Coil System</strong>
+            <span>1,400 individually wrapped springs, 85% less motion transfer</span>
+          </div>
+          <div class="layer-callout-line"></div>
+          <span class="layer-callout-num">07</span>
+        </div>
+        <div class="layer-callout right" data-layer="8" style="top: 310px;">
+          <span class="layer-callout-num">08</span>
+          <div class="layer-callout-line"></div>
+          <div class="layer-callout-text">
+            <strong>High-Density Base</strong>
+            <span>The unyielding foundation that holds it all in place</span>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header">
+    <div>
+      <span class="section-label">The Truman Hybrid</span>
+      <h2 class="section-title reveal">One mattress.<br><em>Every size.</em></h2>
+    </div>
+    <p class="section-body reveal" style="max-width: 380px; font-size: 14px;">
+      We make a single mattress, perfected. The same pocket-coil hybrid construction in every size, so the only thing you choose is how much of it you want to sleep on.
+    </p>
+  </div>
+
+  <div class="hero-product reveal">
+    <div class="hero-product-img">
+      <img class="media-fill" src="uploads/truman_beds_in_industry.JPG" alt="Truman hybrid mattress in production" />
+    </div>
+    <div class="hero-product-info">
+      <h3 class="hero-product-name">The Truman Hybrid</h3>
+      <p class="hero-product-desc">A single, uncompromising mattress: 1,200 individually wrapped pocket coils, gel-infused memory foam, and a hand-quilted knit cover. Built once, built right, and built for every body that lays on it.</p>
+      <div class="hero-product-features">
+        <span class="product-feature">1,200 individually wrapped pocket coils</span>
+        <span class="product-feature">Gel-infused memory foam comfort layers</span>
+        <span class="product-feature">Hand-quilted breathable knit cover</span>
+        <span class="product-feature">Medium-firm feel, sage-piped edge</span>
+
+        <span class="product-feature">100-night home trial</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sizes-section">
+    <h3 class="sizes-title">Available sizes</h3>
+    <div class="sizes-grid">
+      <div class="size-card">
+        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="14" width="60" height="32" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+          <rect x="22" y="16" width="56" height="28" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
+        </svg>
+        <p class="size-name">Single</p>
+        <p class="size-dim">122 × 183 × 26 cm</p>
+        <p class="size-note">For one sleeper</p>
+      </div>
+      <div class="size-card featured">
+        <span class="size-badge">Most popular</span>
+        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="12" width="80" height="36" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+          <rect x="12" y="14" width="76" height="32" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
+        </svg>
+        <p class="size-name">Queen</p>
+        <p class="size-dim">153 × 183 × 26/31 cm</p>
+        <p class="size-note">Couples, generous space</p>
+      </div>
+      <div class="size-card">
+        <svg class="size-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="10" width="88" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+          <rect x="8" y="12" width="84" height="36" rx="1" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.4"/>
+        </svg>
+        <p class="size-name">King</p>
+        <p class="size-dim">183 × 183 × 26/31 cm</p>
+        <p class="size-note">Maximum space, true luxury</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ABOUT -->
 <section id="about">
   <div class="about-img">
@@ -1307,64 +1270,65 @@
     <a href="#blog" class="btn-ghost reveal" style="margin-bottom: 8px;">All articles</a>
   </div>
   <div class="blog-grid reveal">
-    <div class="blog-card">
+    <a href="article1.html" class="blog-card">
       <div class="blog-card-img">
-        <img class="media-fill" src="uploads/75906e8e-558b-4cef-ab45-f23120121e97.JPG" alt="Mattress lifestyle in bedroom" />
+        <img class="media-fill" src="new_batch/PHOTO-2026-05-01-10-01-22 2.jpg" alt="Article 1" />
       </div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Sleep Science</span>
-        <h3 class="blog-card-title">Why pocket coils are the gold standard for couples who share a bed</h3>
+        <h3 class="blog-card-title">Why pocket coils are the gold standard</h3>
         <p class="blog-card-excerpt">Motion isolation isn't just about comfort research shows disrupted sleep from a partner's movement can reduce REM duration by up to 30%.</p>
       </div>
-    </div>
-    <div class="blog-card">
+    </a>
+    <a href="article2.html" class="blog-card">
       <div class="blog-card-img">
-        <img class="media-fill" src="uploads/e0f689dc-81f4-49de-9e14-b4db49fbc644.JPG" alt="Hybrid mattress layer diagram" />
+        <img class="media-fill" src="new_batch/PHOTO-2026-05-01-10-01-22.jpg" alt="Article 2" />
       </div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Thermal Comfort</span>
-        <h3 class="blog-card-title">The link between sleep temperature and deep sleep quality</h3>
+        <h3 class="blog-card-title">The link between temperature and sleep</h3>
         <p class="blog-card-excerpt">Core body temperature naturally drops during sleep onset. Gel-infused foam accelerates this process.</p>
       </div>
-    </div>
-    <div class="blog-card">
+    </a>
+    <a href="article3.html" class="blog-card">
       <div class="blog-card-img">
-        <img class="media-fill" src="uploads/d9f325e3-1aae-496b-954e-fd00d18037b7.JPG" alt="Mattress comfort layer diagram" />
+        <img class="media-fill" src="new_batch/PHOTO-2026-05-01-10-01-23 2.jpg" alt="Article 3" />
       </div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Pressure Relief</span>
-        <h3 class="blog-card-title">How mattress firmness affects spinal alignment through the night</h3>
+        <h3 class="blog-card-title">How firmness affects spinal alignment</h3>
         <p class="blog-card-excerpt">Not all "medium-firm" is equal. Layer composition determines true spinal neutrality.</p>
       </div>
-    </div>
+    </a>
+    <a href="article4.html" class="blog-card">
+      <div class="blog-card-img">
+        <img class="media-fill" src="new_batch/PHOTO-2026-05-01-10-01-23.jpg" alt="Article 4" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Durability</span>
+        <h3 class="blog-card-title">The importance of high-density bases</h3>
+        <p class="blog-card-excerpt">A sturdy foundation prevents premature sagging and extends the life of your comfort layers.</p>
+      </div>
+    </a>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <div style="max-width: 1200px; margin: 0 auto;">
-    <span class="section-label" style="color: var(--gold);">Get in Touch</span>
-    <h2 class="section-title reveal" style="color: var(--white);">Visit our studio.<br><em>Or send us a note.</em></h2>
-    <p class="section-body reveal" style="color: rgba(255,255,255,0.6); max-width: 540px; margin-top: 20px;">
-      Mattress decisions deserve more than an online checkout. Come lie down at our flagship showroom, talk to a sleep consultant, or reach out below — we read everything ourselves.
-    </p>
-
-    <div class="contact-grid">
+    <div class="contact-grid" style="margin-top: 0;">
       <div class="contact-info-col">
-        <div class="contact-block">
-          <p class="contact-block-label">Showroom</p>
-          <p class="contact-block-value">Ntinda<br>Kampala, Uganda</p>
-          <p class="contact-block-meta">Mon–Sat, 10am – 7pm<br>Sun, 11am – 5pm<br>Private appointments by request</p>
+        <div>
+          <span class="section-label" style="color: var(--gold);">Get in Touch</span>
+          <h2 class="section-title reveal" style="color: var(--white);">Reach out.<br><em>We're here to help.</em></h2>
+          <p class="section-body reveal" style="color: rgba(255,255,255,0.6); max-width: 540px; margin-top: 20px;">
+            Mattress decisions deserve more than an online checkout. Reach out below — we read everything ourselves and are ready to assist you.
+          </p>
         </div>
         <div class="contact-block">
           <p class="contact-block-label">Speak to us</p>
           <p class="contact-block-value"><a href="tel:+256789587475">+256-789587475</a></p>
           <p class="contact-block-meta">Sleep consultants on call<br>Mon–Fri, 9am – 6pm EAT</p>
-        </div>
-        <div class="contact-block">
-          <p class="contact-block-label">Write to us</p>
-          <p class="contact-block-value"><a href="mailto:kiaripierre0@gmail.com">kiaripierre0@gmail.com</a></p>
-          <p class="contact-block-meta">We aim to reply within one working day.</p>
         </div>
       </div>
 
@@ -1392,20 +1356,10 @@
               <option>Not sure yet</option>
             </select>
           </div>
-          <div class="form-field">
-            <label for="cf-reason">Reason for enquiry</label>
-            <select id="cf-reason">
-              <option>Book a showroom visit</option>
-              <option>Sleep consultation</option>
-              <option>Delivery &amp; lead times</option>
-              <option>Trade / hospitality</option>
-              <option>Warranty &amp; care</option>
-            </select>
-          </div>
         </div>
         <div class="form-field" style="margin-bottom: 28px;">
           <label for="cf-msg">Message</label>
-          <textarea id="cf-msg" rows="3" placeholder="How do you sleep, and what are you looking for?"></textarea>
+          <textarea id="cf-msg" rows="3" placeholder="What are you looking for?"></textarea>
         </div>
         <button class="form-submit" type="submit">Send enquiry</button>
       </form>
@@ -1415,18 +1369,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div>
-      <p class="footer-brand-name">Truman Bed &amp; Mattress</p>
-      <p class="footer-brand-desc">Premium hybrid mattresses crafted for discerning sleepers. Pocket coil precision, memory foam luxury built to last a lifetime.</p>
-    </div>
-    <div>
-      <p class="footer-col-title">Contact</p>
-      <ul class="footer-links">
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
+
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Truman Bed &amp; Mattress. All rights reserved.</p>
     <span class="footer-mark">Crafted for exceptional sleep</span>
@@ -1451,8 +1394,8 @@
   const layerSection = document.getElementById('layer-reveal');
   const pieces = document.querySelectorAll('.layer-piece');
   const callouts = document.querySelectorAll('.layer-callout');
-  const initialOffsets = [-260, -170, -90, 50, 180, 320];
-  const mobileOffsets = [-120, -78, -42, 24, 84, 138];
+  const initialOffsets = [-320, -240, -160, -80, 0, 80, 200, 340];
+  const mobileOffsets = [-100, -75, -50, -25, 0, 25, 50, 75];
   function updateLayers() {
     if (!layerSection) return;
     const rect = layerSection.getBoundingClientRect();
@@ -1463,6 +1406,7 @@
     pieces.forEach((p, i) => {
       const ty = activeOffsets[i] * (1 - Math.min(1, progress * 1.4));
       p.style.setProperty('--ty', ty + 'px');
+      p.style.setProperty('--txt-opacity', Math.max(0, 1 - progress * 2));
     });
     callouts.forEach((c, i) => {
       const threshold = 0.65 + (i * 0.04);
