@@ -1,0 +1,27 @@
+<svg viewBox="0 0 589 340" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;display=swap');</style>
+  </defs>
+
+  <!-- headboard: two posts + bar -->
+  <g fill="#545454">
+    <rect x="240" y="95"  width="16"  height="24" rx="2.5"/>
+    <rect x="338" y="95"  width="16"  height="24" rx="2.5"/>
+    <rect x="240" y="101" width="114" height="18" rx="2.5"/>
+  </g>
+
+  <!-- pillows -->
+  <path fill="#9c8353" d="M237,158 V147 Q237,133 262.5,133 Q288,133 288,147 V158 Z"/>
+  <path fill="#9c8353" d="M300,158 V147 Q300,133 325.5,133 Q351,133 351,147 V158 Z"/>
+
+  <!-- mattress base + legs -->
+  <g fill="#545454">
+    <rect x="225" y="169" width="141" height="40" rx="3"/>
+    <rect x="225" y="205" width="21"  height="16"/>
+    <rect x="345" y="205" width="21"  height="16"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="294" y="283" font-family="Montserrat,sans-serif" font-weight="800" font-size="72" fill="#9c8353" letter-spacing="4" text-anchor="middle">TRUMAN BED</text>
+  <text x="294" y="323" font-family="Montserrat,sans-serif" font-weight="600" font-size="28" fill="#545454" letter-spacing="18" text-anchor="middle">AND MATTRESS</text>
+</svg>

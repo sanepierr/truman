@@ -6,7 +6,7 @@
 <title>Truman Bed & Mattress</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Urbanist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Urbanist:wght@300;400;500;600&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -51,18 +51,14 @@
     border-bottom: 1px solid rgba(0,0,0,0.06);
   }
   .nav-logo {
-    display: flex; align-items: center; gap: 12px; text-decoration: none;
+    display: flex; align-items: center; text-decoration: none;
   }
   .nav-logo-mark {
-    width: 36px; height: 36px;
+    width: auto; height: 56px;
   }
-  .nav-logo-text {
-    font-family: 'Gloock', serif;
-    font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--charcoal); font-weight: 500;
-    line-height: 1.2;
+  @media (max-width: 1024px) {
+    .nav-logo-mark { height: 44px; }
   }
-  .nav-logo-text span { display: block; font-size: 9px; letter-spacing: 0.3em; color: var(--gold-dark); }
   .nav-links {
     display: flex; gap: 36px; list-style: none;
   }
@@ -147,6 +143,7 @@
   .hero-right {
     position: relative; overflow: hidden;
     background: var(--cream);
+    min-height: 500px;
   }
   .hero-img-placeholder {
     position: absolute; inset: 0;
@@ -289,6 +286,7 @@
     width: 860px; height: 520px;
     margin: 0 auto;
     perspective: 1400px;
+    overflow: visible;
   }
   .layer-piece {
     position: absolute; left: 0; right: 0;
@@ -322,17 +320,25 @@
   }
   .layer-callout.visible { opacity: 1; }
   .layer-callout-line {
-    width: 56px; height: 1px; flex-shrink: 0;
-    background: var(--charcoal);
-    margin-top: 12px;
+    width: 56px; flex-shrink: 0;
     position: relative;
+    align-self: stretch;
+  }
+  .layer-callout-line::before {
+    content: ''; position: absolute;
+    left: 0; right: 0;
+    top: var(--line-y, 12px);
+    height: 1px;
+    background: var(--gold);
   }
   .layer-callout-line::after {
     content: ''; position: absolute;
     width: 6px; height: 6px; border-radius: 50%;
     background: var(--gold);
-    right: -3px; top: -3px;
+    right: -3px; top: calc(var(--line-y, 12px) - 3px);
   }
+  .layer-callout.left .layer-callout-line::before { left: 0; right: 0; }
+  .layer-callout.left .layer-callout-line::after { right: auto; left: -3px; }
   .layer-callout-num {
     font-family: 'Gloock', serif; font-size: 20px; line-height: 1;
     color: var(--gold-dark); font-weight: 400;
@@ -811,9 +817,6 @@
   @media (max-width: 1024px) {
     nav, nav.scrolled { padding: 18px 20px; }
     .nav-links { display: none; }
-    .nav-logo-mark { width: 30px; height: 30px; }
-    .nav-logo-text { font-size: 12px; letter-spacing: 0.12em; }
-    .nav-logo-text span { font-size: 8px; letter-spacing: 0.2em; }
     .nav-cta { padding: 8px 14px; font-size: 10px; }
 
     #hero {
@@ -832,7 +835,7 @@
       padding-top: 24px;
       flex-wrap: wrap;
     }
-    .hero-right { min-height: 60vh; }
+    .hero-right { min-height: 50vw; }
     .hero-tag { left: 20px; right: 20px; bottom: 20px; padding: 12px 16px; }
 
     section { padding: 88px 16px; }
@@ -993,13 +996,23 @@
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#hero" class="nav-logo">
-    <svg class="nav-logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="4" y="8" width="28" height="4" fill="#1a1612"/>
-      <rect x="14" y="12" width="8" height="16" fill="#1a1612"/>
-      <rect x="4" y="24" width="28" height="4" fill="#c8a84b" opacity="0.85"/>
+  <a href="#hero" class="nav-logo" aria-label="Truman Bed &amp; Mattress">
+    <svg class="nav-logo-mark" viewBox="0 0 589 340" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+      <g fill="#545454">
+        <rect x="240" y="95"  width="16"  height="24" rx="2.5"/>
+        <rect x="338" y="95"  width="16"  height="24" rx="2.5"/>
+        <rect x="240" y="101" width="114" height="18" rx="2.5"/>
+      </g>
+      <path fill="#9c8353" d="M237,158 V147 Q237,133 262.5,133 Q288,133 288,147 V158 Z"/>
+      <path fill="#9c8353" d="M300,158 V147 Q300,133 325.5,133 Q351,133 351,147 V158 Z"/>
+      <g fill="#545454">
+        <rect x="225" y="169" width="141" height="40" rx="3"/>
+        <rect x="225" y="205" width="21"  height="16"/>
+        <rect x="345" y="205" width="21"  height="16"/>
+      </g>
+      <text x="294" y="283" font-family="Montserrat,sans-serif" font-weight="800" font-size="72" fill="#9c8353" letter-spacing="4" text-anchor="middle">TRUMAN BED</text>
+      <text x="294" y="323" font-family="Montserrat,sans-serif" font-weight="600" font-size="28" fill="#545454" letter-spacing="18" text-anchor="middle">AND MATTRESS</text>
     </svg>
-    <span class="nav-logo-text">Truman<span>Bed &amp; Mattress</span></span>
   </a>
   <ul class="nav-links">
     <li><a href="#products">The Mattress</a></li>
@@ -1016,7 +1029,7 @@
   <div class="hero-left">
     <p class="hero-eyebrow reveal">Premium Hybrid Mattresses</p>
     <div class="hero-title-container reveal">
-      <h1 class="hero-title">Rest like<br><em>royalty.</em><br>Sleep like<br>science.</h1>
+      <h1 class="hero-title">Rest like <em>Royalty,</em><br>Every single night.</h1>
       <img class="hero-title-img" src="uploads/truman_beds_in_industry.JPG" alt="Truman Mattress Production" />
     </div>
     <p class="hero-body reveal reveal-delay-2">
@@ -1128,65 +1141,68 @@
         <div class="layer-piece lp-7" style="--ty: 200px;"></div>
         <div class="layer-piece lp-8" style="--ty: 340px;"></div>
 
-        <div class="layer-callout left" data-layer="1" style="top: 16px;">
+        <!-- left labels: staggered at 0, 80, 160, 240 — line-y bridges to layer center -->
+        <div class="layer-callout left" data-layer="1" style="top: 0px;">
           <div class="layer-callout-text">
             <strong>Quilted Knit Cover</strong>
             <span>Breathable four-way stretch knit, hypoallergenic, soft to the touch</span>
           </div>
-          <div class="layer-callout-line"></div>
+          <div class="layer-callout-line" style="--line-y: 36px;"></div>
           <span class="layer-callout-num">01</span>
-        </div>
-        <div class="layer-callout right" data-layer="2" style="top: 48px;">
-          <span class="layer-callout-num">02</span>
-          <div class="layer-callout-line"></div>
-          <div class="layer-callout-text">
-            <strong>Comfort Foam</strong>
-            <span>Adds plush softness to define the cosy sleeping zone</span>
-          </div>
         </div>
         <div class="layer-callout left" data-layer="3" style="top: 80px;">
           <div class="layer-callout-text">
             <strong>Gel Memory Foam</strong>
             <span>Pressure relieving, contours to the body, stays cool</span>
           </div>
-          <div class="layer-callout-line"></div>
+          <div class="layer-callout-line" style="--line-y: 20px;"></div>
           <span class="layer-callout-num">03</span>
         </div>
-        <div class="layer-callout right" data-layer="4" style="top: 112px;">
-          <span class="layer-callout-num">04</span>
-          <div class="layer-callout-line"></div>
-          <div class="layer-callout-text">
-            <strong>Convoluted Foam</strong>
-            <span>Transition layer for airflow and even weight distribution</span>
-          </div>
-        </div>
-        <div class="layer-callout left" data-layer="5" style="top: 144px;">
+        <div class="layer-callout left" data-layer="5" style="top: 155px;">
           <div class="layer-callout-text">
             <strong>High-Resilience Foam</strong>
             <span>Responsive support that adapts quickly to your movement</span>
           </div>
-          <div class="layer-callout-line"></div>
+          <div class="layer-callout-line" style="--line-y: 12px;"></div>
           <span class="layer-callout-num">05</span>
-        </div>
-        <div class="layer-callout right" data-layer="6" style="top: 176px;">
-          <span class="layer-callout-num">06</span>
-          <div class="layer-callout-line"></div>
-          <div class="layer-callout-text">
-            <strong>Adaptive Support Foam</strong>
-            <span>Deep compression support preventing sinkage</span>
-          </div>
         </div>
         <div class="layer-callout left" data-layer="7" style="top: 240px;">
           <div class="layer-callout-text">
             <strong>Pocket Coil System</strong>
             <span>1,400 individually wrapped springs, 85% less motion transfer</span>
           </div>
-          <div class="layer-callout-line"></div>
+          <div class="layer-callout-line" style="--line-y: 28px;"></div>
           <span class="layer-callout-num">07</span>
         </div>
-        <div class="layer-callout right" data-layer="8" style="top: 310px;">
+
+        <!-- right labels: staggered at 30, 110, 185, 300 — line-y bridges to layer center -->
+        <div class="layer-callout right" data-layer="2" style="top: 30px;">
+          <span class="layer-callout-num">02</span>
+          <div class="layer-callout-line" style="--line-y: 37px;"></div>
+          <div class="layer-callout-text">
+            <strong>Comfort Foam</strong>
+            <span>Adds plush softness to define the cosy sleeping zone</span>
+          </div>
+        </div>
+        <div class="layer-callout right" data-layer="4" style="top: 110px;">
+          <span class="layer-callout-num">04</span>
+          <div class="layer-callout-line" style="--line-y: 25px;"></div>
+          <div class="layer-callout-text">
+            <strong>Convoluted Foam</strong>
+            <span>Transition layer for airflow and even weight distribution</span>
+          </div>
+        </div>
+        <div class="layer-callout right" data-layer="6" style="top: 185px;">
+          <span class="layer-callout-num">06</span>
+          <div class="layer-callout-line" style="--line-y: 16px;"></div>
+          <div class="layer-callout-text">
+            <strong>Adaptive Support Foam</strong>
+            <span>Deep compression support preventing sinkage</span>
+          </div>
+        </div>
+        <div class="layer-callout right" data-layer="8" style="top: 300px;">
           <span class="layer-callout-num">08</span>
-          <div class="layer-callout-line"></div>
+          <div class="layer-callout-line" style="--line-y: 30px;"></div>
           <div class="layer-callout-text">
             <strong>High-Density Base</strong>
             <span>The unyielding foundation that holds it all in place</span>
@@ -1443,8 +1459,9 @@
       p.style.setProperty('--ty', ty + 'px');
       p.style.setProperty('--txt-opacity', Math.max(0, 1 - progress * 2));
     });
-    callouts.forEach((c, i) => {
-      const threshold = 0.65 + (i * 0.04);
+    callouts.forEach((c) => {
+      const layerNum = parseInt(c.dataset.layer || '1', 10);
+      const threshold = 0.60 + (layerNum * 0.04);
       c.classList.toggle('visible', progress > threshold);
     });
     document.documentElement.style.setProperty('--progress', progress);
@@ -1486,11 +1503,9 @@ function TrumanTweaks() {
     if (tweaks.darkNav) {
       nav.style.background = 'var(--charcoal)';
       nav.querySelectorAll('a').forEach(a => a.style.color = 'white');
-      nav.querySelector('.nav-logo-text').style.color = 'white';
     } else {
       nav.style.background = '';
       nav.querySelectorAll('a').forEach(a => a.style.color = '');
-      nav.querySelector('.nav-logo-text').style.color = '';
     }
   }, [tweaks]);
 
